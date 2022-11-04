@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 플레이어 이동 제어 관련
 public class Movment : MonoBehaviour
 {
     public float speed;

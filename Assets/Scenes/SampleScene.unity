@@ -1678,6 +1678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a73c35418a05fc1449d3e016b1aff5a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
 --- !u!1 &297401547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1723,6 +1724,7 @@ GameObject:
   - component: {fileID: 375362107}
   - component: {fileID: 375362106}
   - component: {fileID: 375362104}
+  - component: {fileID: 375362109}
   - component: {fileID: 375362108}
   m_Layer: 0
   m_Name: Player
@@ -1820,7 +1822,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e1cde29ec06ee4897d3229aa1f42de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numCarrotSeed: 0
+  inventory: {fileID: 0}
+--- !u!114 &375362109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375362103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81daa84eb76c54e43b6681cc7bbe8c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slots: []
 --- !u!1 &403130524
 GameObject:
   m_ObjectHideFlags: 0
