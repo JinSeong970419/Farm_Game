@@ -18,7 +18,7 @@ public class Slot_UI : MonoBehaviour
             quantityText.text = slot.count.ToString();
         }
     }
-
+     
     public void SetEmpty()
     {
         itemIcon.sprite = null;
