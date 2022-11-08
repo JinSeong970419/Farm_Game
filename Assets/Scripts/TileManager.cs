@@ -12,10 +12,12 @@ public class TileManager : MonoBehaviour
 
     void Start()
     {
+        // 농사 가능한 지역 찾아오기
         foreach (var position in interactableMap.cellBounds.allPositionsWithin)
         {
             TileBase tile = interactableMap.GetTile(position);
 
+            // 이름이 Interactable_Visible 농사 가능지역 검색 후 타일 정보 변경
             if (tile != null && tile.name == "Interactable_Visible")
             {
                 interactableMap.SetTile(position, hiddenInteractableTile);
@@ -38,6 +40,7 @@ public class TileManager : MonoBehaviour
         return false;
     }
 
+    // 괭이 완료 지역 표시
     public void SetInteracted(Vector3Int position)
     {
         interactableMap.SetTile(position, interactedTile);
