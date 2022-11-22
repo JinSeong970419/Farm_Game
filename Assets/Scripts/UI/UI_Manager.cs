@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class UI_Manager : MonoBehaviour
 {
@@ -15,31 +16,20 @@ public class UI_Manager : MonoBehaviour
     public static Image draggedIcon;
     public static bool dragSingle;
 
+    public static UnityAction InventoryOnOff; // 인벤토리 온오프 기능
+
     private void Awake()
     {
         Initialized();
+        InventoryOnOff = () => { ToggleInventoryUI(); };
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.B))
-        {
-            ToggleInventoryUI();
-        }
-
-        // 버그 있음 나중에 고치기
         //if (Input.GetKeyDown(KeyCode.LeftShift))
         //{
-        //    dragSingle = true;
+        //    dragSingle = !dragSingle;
         //}
-        //else
-        //{
-        //    dragSingle = false;
-        //}
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            dragSingle = !dragSingle;
-        }
     }
 
     // Inventory Ui On/Off
@@ -92,5 +82,6 @@ public class UI_Manager : MonoBehaviour
         {
             inventoryUIByName.Add(ui.inventoryName, ui);
         }
+        inventoryPanel.SetActive(false);
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public InputReader _inputReader;
     public InventoryManager inventory;
 
     private void Awake()
@@ -13,16 +14,16 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0);
-
-            if (GameManager.instance.tileManager.IsInteractable(position))
-            {
-                Debug.Log("사용 가능 타일");
-                GameManager.instance.tileManager.SetInteracted(position);
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0);
+        //    Debug.Log($"Player 위치 : {position}");
+        //    if (GameManager.instance.tileManager.IsInteractable(position))
+        //    {
+        //        Debug.Log("사용 가능 타일");
+        //        GameManager.instance.tileManager.SetInteracted(position);
+        //    }
+        //}
     }
 
     // 아이템 버리기

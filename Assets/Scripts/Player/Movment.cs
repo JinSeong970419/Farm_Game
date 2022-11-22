@@ -2,21 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// 플레이어 이동 제어 관련
+// 플레이어 이동 제어 관련 -> 제어 이름변경하기
 public class Movment : MonoBehaviour
 {
     public float speed;
 
     public Animator animator;
 
+    public InputReader _inputReader;
+    private Vector2 _inputVector;
+
     private Vector3 direction;
- 
+
+    private void OnEnable()
+    {
+        _inputReader.Movement += OnMove;
+        _inputReader.Inventory += OnInventory;
+        _inputReader.Keypad += OnKeyPad;
+    }
+
+    private void OnDisable()
+    {
+        _inputReader.Movement -= OnMove;
+        _inputReader.Inventory -= OnInventory;
+        _inputReader.Keypad -= OnKeyPad;
+    }
+
     void Update()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-
-        direction = new Vector3(horizontal, vertical);
+        direction = new Vector3(_inputVector.x, _inputVector.y);
 
         AnimateMovement(direction);
     }
@@ -25,6 +39,10 @@ public class Movment : MonoBehaviour
     {
         transform.position += direction * speed* Time.deltaTime;
     }
+
+    private void OnMove(Vector2 movement) { _inputVector = movement; }
+    private void OnInventory() { UI_Manager.InventoryOnOff(); }
+    private void OnKeyPad(string number) { Toolbar_UI.checAlphaNumbericKeys(number); }
 
     void AnimateMovement(Vector3 direction)
     {
