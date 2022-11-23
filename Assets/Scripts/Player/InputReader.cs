@@ -38,13 +38,5 @@ public class InputReader : ScriptableObject, PlayerControls.IPlayerActions
 
     public void OnMenuBar(InputAction.CallbackContext context) { if (context.started) { Keypad.Invoke(context.control.name); } }
 
-    public void OnMouse(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            //Debug.Log(context);
-            MouseClick.Invoke();
-        }
-        //Debug.Log(context.ReadValue<Vector2>());
-    }
+    public void OnMouse(InputAction.CallbackContext context) { if (context.started) { MouseClick.Invoke(); } }
 }

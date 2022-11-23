@@ -25,11 +25,17 @@ public class TileManager : MonoBehaviour
         }
     }
 
-    // 상호작용 가능 여부 확인
+    // Interactable 타일맵 정보 확인
+    public TileBase InteractableTileInfo(Vector3Int position)
+    {
+        TileBase tile = interactableMap.GetTile(position);
+        return tile;
+    }
+
+    // 괭이질 가능 여부 확인 ? 사용가능 땅 확인 여부
     public bool IsInteractable(Vector3Int position)
     {
         TileBase tile = interactableMap.GetTile(position);
-
         if(tile != null)
         {
             if(tile.name == "Interactable")
