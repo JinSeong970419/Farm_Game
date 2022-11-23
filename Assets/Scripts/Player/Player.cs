@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public InputReader _inputReader;
+    //public InputReader _inputReader;
     public InventoryManager inventory;
 
     private void Awake()

@@ -2915,6 +2915,7 @@ GameObject:
   - component: {fileID: 235068585}
   - component: {fileID: 235068584}
   - component: {fileID: 235068587}
+  - component: {fileID: 235068589}
   - component: {fileID: 235068588}
   m_Layer: 0
   m_Name: Game Manager
@@ -2999,6 +3000,25 @@ MonoBehaviour:
   inventoryUIs:
   - {fileID: 1265758777}
   - {fileID: 291789526}
+--- !u!114 &235068589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235068583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c9b5eba5dd387478c35bd39ce3d55d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 972150887}
+  tileDatas:
+  - {fileID: 11400000, guid: 08851432724662843a1c532e4e513b2c, type: 2}
+  - {fileID: 11400000, guid: 502a9906dd675864ba7c3f58392a694f, type: 2}
+  - {fileID: 11400000, guid: 999b5385040224f41804fc2995403774, type: 2}
+  - {fileID: 11400000, guid: f32babddb65e30349b9180671c9859ec, type: 2}
+  - {fileID: 11400000, guid: a38973bc3d5dc7540ac93ef9a61aa878, type: 2}
 --- !u!1001 &235807235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3690,6 +3710,7 @@ GameObject:
   - component: {fileID: 375362104}
   - component: {fileID: 375362108}
   - component: {fileID: 375362109}
+  - component: {fileID: 375362110}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3787,7 +3808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e1cde29ec06ee4897d3229aa1f42de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: 94d953eca67ce3c42a21d212e779750b, type: 2}
   inventory: {fileID: 0}
 --- !u!114 &375362109
 MonoBehaviour:
@@ -3807,6 +3827,19 @@ MonoBehaviour:
   toolbar:
     slots: []
   toolbarSlotCount: 9
+--- !u!114 &375362110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375362103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d89e0343565ca47b174b79dbe3cf8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileMapReadController: {fileID: 235068589}
 --- !u!1 &403130524
 GameObject:
   m_ObjectHideFlags: 0
@@ -18078,30 +18111,31 @@ EdgeCollider2D:
   - {x: -1.3711419, y: 8.126958}
   - {x: 0.98601913, y: 8.197174}
   - {x: 1.0012426, y: 7.331765}
-  - {x: 8.951524, y: 7.3446674}
-  - {x: 8.94643, y: 4.3804436}
-  - {x: 13.529159, y: 4.1384153}
-  - {x: 15.037905, y: 3.1969357}
-  - {x: 15.200366, y: 1.5825164}
-  - {x: 15.769326, y: 1.7154418}
-  - {x: 15.612032, y: -3.5231967}
-  - {x: 14.723894, y: -4.367023}
-  - {x: 14.455567, y: -6.5663996}
-  - {x: 13.621979, y: -7.6419253}
-  - {x: 3.0121262, y: -7.618579}
-  - {x: 2.9899402, y: -8.605434}
-  - {x: 14.56043, y: -8.490173}
-  - {x: 14.767729, y: -7.558829}
-  - {x: 15.492813, y: -7.6439342}
-  - {x: 15.640305, y: -4.993655}
-  - {x: 16.530384, y: -4.1619368}
-  - {x: 16.529102, y: 3.0713358}
-  - {x: 15.358246, y: 3.1786942}
-  - {x: 15.336802, y: 4.1971946}
-  - {x: 14.39814, y: 4.179617}
-  - {x: 14.355031, y: 5.2508817}
-  - {x: 9.574512, y: 5.3374615}
-  - {x: 9.48577, y: 8.056862}
+  - {x: 8.187021, y: 7.4720845}
+  - {x: 8.266872, y: 4.295499}
+  - {x: 12.977017, y: 4.3507776}
+  - {x: 13.5001745, y: 3.4140503}
+  - {x: 14.358347, y: 3.4942427}
+  - {x: 14.393391, y: 2.2196026}
+  - {x: 15.344602, y: 2.3525279}
+  - {x: 15.314726, y: -3.6930866}
+  - {x: 14.2991705, y: -4.5369124}
+  - {x: 14.328151, y: -6.7787614}
+  - {x: 13.154783, y: -7.981704}
+  - {x: 2.9271805, y: -7.915885}
+  - {x: 3.032411, y: -8.647907}
+  - {x: 13.413675, y: -8.617591}
+  - {x: 14.08817, y: -7.6862454}
+  - {x: 14.855727, y: -7.176738}
+  - {x: 14.833329, y: -4.866238}
+  - {x: 15.850826, y: -3.992047}
+  - {x: 15.892017, y: 2.731557}
+  - {x: 15.018467, y: 3.0937495}
+  - {x: 14.95455, y: 4.1971946}
+  - {x: 13.888472, y: 4.094672}
+  - {x: 13.675473, y: 5.0809913}
+  - {x: 8.852481, y: 5.040155}
+  - {x: 8.763741, y: 7.929445}
   - {x: 1.6830711, y: 8.096099}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
@@ -18887,7 +18921,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1839735485 &1248455135
 Tilemap:
   m_ObjectHideFlags: 0

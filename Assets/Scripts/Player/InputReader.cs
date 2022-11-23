@@ -8,6 +8,7 @@ public class InputReader : ScriptableObject, PlayerControls.IPlayerActions
     public event UnityAction<Vector2> Movement = delegate { };
     public event UnityAction Inventory = delegate { };
     public event UnityAction<string> Keypad = delegate { };
+    public event UnityAction MouseClick = delegate { };
 
     private PlayerControls _playerCtrl;
 
@@ -36,4 +37,14 @@ public class InputReader : ScriptableObject, PlayerControls.IPlayerActions
     public void OnInventory(InputAction.CallbackContext context) { Inventory.Invoke(); }
 
     public void OnMenuBar(InputAction.CallbackContext context) { if (context.started) { Keypad.Invoke(context.control.name); } }
+
+    public void OnMouse(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            //Debug.Log(context);
+            MouseClick.Invoke();
+        }
+        //Debug.Log(context.ReadValue<Vector2>());
+    }
 }
