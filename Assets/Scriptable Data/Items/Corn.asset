@@ -12,15 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb3769d1327c234a8927da705cc0d43, type: 3}
   m_Name: Corn
   m_EditorClassIdentifier: 
-  state0: {fileID: 11400000, guid: 5ac139fc8eade6b48b343a370177a59c, type: 2}
-  state1: {fileID: 11400000, guid: 236680eb446189e4c9f4f4a7432533b8, type: 2}
-  state2: {fileID: 11400000, guid: bc83760fca372f844a4dbbe6fa71803f, type: 2}
-  state3: {fileID: 11400000, guid: 82716052ada88a84ea637c0afee96a35, type: 2}
-  state4: {fileID: 11400000, guid: 9dc5d50a007d66f429dfe79263204e67, type: 2}
-  state5: {fileID: 11400000, guid: 6b26031f0cdc4f94c8c2403873d2cdc5, type: 2}
+  state0: {fileID: 11400000, guid: 236680eb446189e4c9f4f4a7432533b8, type: 2}
+  state1: {fileID: 11400000, guid: bc83760fca372f844a4dbbe6fa71803f, type: 2}
+  state2: {fileID: 11400000, guid: 82716052ada88a84ea637c0afee96a35, type: 2}
+  state3: {fileID: 11400000, guid: 9dc5d50a007d66f429dfe79263204e67, type: 2}
+  state4: {fileID: 11400000, guid: 6b26031f0cdc4f94c8c2403873d2cdc5, type: 2}
   state: {fileID: 0}
   position: {x: 0, y: 0, z: 0}
-  timeRemaining: 10
+  timeRemaining: 2
   timerIsRunning: 0
   timeText: {fileID: 0}
   Name: corn

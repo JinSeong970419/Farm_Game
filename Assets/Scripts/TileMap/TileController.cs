@@ -33,7 +33,9 @@ public class TileController : MonoBehaviour
         Vector2 mouseCurrentPosition = Mouse.current.position.ReadValue();
         Vector3Int gridPosition = tileMapReadController.GetGridPosition(mouseCurrentPosition, true);
         // 1. 선택된 타일의 정보 추출
-        TileBase tileName = GameManager.instance.tileManager.InteractableTileInfo(gridPosition);
+        TileBase tileName = GameManager.instance.tileManager.TileInfo(gridPosition, 0);  // 비트 연산?...
+        // 타일 이름 테스트
+        //Debug.Log(tileName.name);
 
         // 2. 타일의 상태 종류 확인 - Interactable일 경우
         // 작물을 심을 수 있는 타일로 변경
@@ -51,8 +53,25 @@ public class TileController : MonoBehaviour
         // 작물을 심을 수 있는 타일로 변경
         if (tileName.name == "Summer_Plowed")
         {
-            GameManager.instance.tileManager.SetInteracted(gridPosition);
-            cropsManager.SeedCrop(gridPosition, "corn");
+            TileBase tilename = GameManager.instance.tileManager.TileInfo(gridPosition, 1);
+
+            // 임시
+            // 1. 작물이 심어져 있지 않은 경우
+            if(tilename == null)
+            {
+                GameManager.instance.tileManager.SetInteracted(gridPosition);
+                cropsManager.SeedCrop(gridPosition, "corn");
+            }
+            
+            // 2. 작물이 심어져 있는 경우_ 물주기
+            else
+            {
+                cropsManager.Water(gridPosition);
+
+                tilename = GameManager.instance.tileManager.TileInfo(gridPosition, 1);
+                Debug.Log($"Crops타일 테스트 : {tilename.name}");
+            }
+
         }
     }
 

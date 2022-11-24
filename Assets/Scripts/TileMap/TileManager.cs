@@ -6,10 +6,12 @@ using UnityEngine.Tilemaps;
 public class TileManager : MonoBehaviour
 {
     [SerializeField] private Tilemap interactableMap;
+    [SerializeField] private Tilemap cropsTileMap;
 
     [SerializeField] private Tile hiddenInteractableTile;
     [SerializeField] private Tile interactedTile;
 
+    TileBase tile;
     void Start()
     {
         // 농사 가능한 지역 찾아오기
@@ -26,9 +28,17 @@ public class TileManager : MonoBehaviour
     }
 
     // Interactable 타일맵 정보 확인
-    public TileBase InteractableTileInfo(Vector3Int position)
+    public TileBase TileInfo(Vector3Int position, int state) // int를 enum 형태로 바꾸기
     {
-        TileBase tile = interactableMap.GetTile(position);
+        switch (state)
+        {
+            case 0:
+                tile = interactableMap.GetTile(position);
+                break;
+            case 1:
+                tile = cropsTileMap.GetTile(position);
+                break;
+        }
         return tile;
     }
 

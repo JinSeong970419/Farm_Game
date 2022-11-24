@@ -18,8 +18,6 @@ public class Crop : ScriptableObject
 
     public TileBase state4;
 
-    public TileBase state5;
-
     //public Tilemap cropTilemap;
 
     public TileBase state; // 농작물 상태
