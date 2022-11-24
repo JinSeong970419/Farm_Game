@@ -61,4 +61,9 @@ public class TileManager : MonoBehaviour
     {
         interactableMap.SetTile(position, interactedTile);
     }
+
+    public void SetInteracted(Vector3Int position, Tile tile)
+    {
+        interactableMap.SetTile(position, tile);
+    }
 }

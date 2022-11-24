@@ -14,6 +14,9 @@ public class CropsManager : MonoBehaviour
     public Dictionary<Vector3Int, Crop> corns;
     public Crop corn;
 
+    // 타일 정보
+    [SerializeField] private Tile wetground;
+    [SerializeField] private Tile dryground;
     private void Start()
     {
         crops = new Dictionary<Vector3Int, Crop>();
@@ -50,7 +53,8 @@ public class CropsManager : MonoBehaviour
     public void Water(Vector3Int position)
     {
         crops[position].timerIsRunning = true; // 식물 자라게
-        //groundTilemap.SetTile(position, watered); // 타일 지도의 타일을 지면에 바꾸기
+        // 타일을 젖은 지면에 바꾸기
+        GameManager.instance.tileManager.SetInteracted(position, wetground); // 타일 모아서 번경할까?
         //Debug.Log(crops[position].timeRemaining);
     }
 
@@ -77,8 +81,9 @@ public class CropsManager : MonoBehaviour
                 else if (crop.state == crop.state3)
                     crop.state = crop.state4;
 
-                // 농작물 상태 변경
+                // 농작물 및 바닥 타일 상태 변경
                 cropTilemap.SetTile(crop.position, crop.state);
+                GameManager.instance.tileManager.SetInteracted(crop.position, dryground);
 
                 // 농작물 성장 종료
                 crop.timerIsRunning = false;
