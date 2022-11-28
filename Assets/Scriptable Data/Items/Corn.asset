@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb3769d1327c234a8927da705cc0d43, type: 3}
   m_Name: Corn
   m_EditorClassIdentifier: 
-  state0: {fileID: 11400000, guid: f6e08b97f211fb34ea3de0afa8cb7272, type: 2}
-  state1: {fileID: 11400000, guid: 88285d158f8bed544880de0357a2017b, type: 2}
-  state2: {fileID: 11400000, guid: b5f2f8057a7550240826176e03da6c93, type: 2}
-  state3: {fileID: 11400000, guid: 87bf2cf2679b1244bb533173925796bb, type: 2}
-  state4: {fileID: 11400000, guid: 8d05de0c748635f49b757d350c3cd65b, type: 2}
-  state: {fileID: 0}
+  Name: corn
+  state:
+  - {fileID: 11400000, guid: f6e08b97f211fb34ea3de0afa8cb7272, type: 2}
+  - {fileID: 11400000, guid: 88285d158f8bed544880de0357a2017b, type: 2}
+  - {fileID: 11400000, guid: b5f2f8057a7550240826176e03da6c93, type: 2}
+  - {fileID: 11400000, guid: 87bf2cf2679b1244bb533173925796bb, type: 2}
+  - {fileID: 11400000, guid: 8d05de0c748635f49b757d350c3cd65b, type: 2}
+  stateNow: {fileID: 0}
+  stateIndex: 0
   position: {x: 0, y: 0, z: 0}
   timeRemaining: 2
   timerIsRunning: 0
   timeText: {fileID: 0}
-  Name: corn

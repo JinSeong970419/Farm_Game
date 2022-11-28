@@ -17,19 +17,22 @@ public class UI_Manager : MonoBehaviour
     public static bool dragSingle;
 
     public static UnityAction InventoryOnOff; // 인벤토리 온오프 기능
+    public static UnityAction SingleOnOff; // 인벤토리 온오프 기능
 
     private void Awake()
     {
         Initialized();
         InventoryOnOff = () => { ToggleInventoryUI(); };
+        SingleOnOff = () => { SingleKey(); };
     }
 
-    private void Update()
+    private void Initialized()
     {
-        //if (Input.GetKeyDown(KeyCode.LeftShift))
-        //{
-        //    dragSingle = !dragSingle;
-        //}
+        foreach (Inventory_UI ui in inventoryUIs)
+        {
+            inventoryUIByName.Add(ui.inventoryName, ui);
+        }
+        inventoryPanel.SetActive(false);
     }
 
     // Inventory Ui On/Off
@@ -48,6 +51,8 @@ public class UI_Manager : MonoBehaviour
             }
         }
     }
+
+    public void SingleKey() { dragSingle = !dragSingle; }
 
     public void RefreshInventoryUI(string inventoryName)
     {
@@ -76,12 +81,5 @@ public class UI_Manager : MonoBehaviour
         return null;
     }
 
-    private void Initialized()
-    {
-        foreach (Inventory_UI ui in inventoryUIs)
-        {
-            inventoryUIByName.Add(ui.inventoryName, ui);
-        }
-        inventoryPanel.SetActive(false);
-    }
+    
 }

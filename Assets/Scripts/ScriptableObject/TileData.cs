@@ -7,6 +7,7 @@ using UnityEngine.Tilemaps;
 public class TileData : ScriptableObject
 {
     public List<TileBase> tiles; // 타일 Base
+    //public TileBase tiles; // 타일 Base
 
     public bool plowable; // 경작가능 타일
 

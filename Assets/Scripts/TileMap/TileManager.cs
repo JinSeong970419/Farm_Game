@@ -5,15 +5,34 @@ using UnityEngine.Tilemaps;
 
 public class TileManager : MonoBehaviour
 {
+    [SerializeField] Tilemap Groundtilemap;    // Ground 타일
     [SerializeField] private Tilemap interactableMap;
     [SerializeField] private Tilemap cropsTileMap;
 
+    [SerializeField] List<TileData> tileDatas; // 타일 정보 변수
     [SerializeField] private Tile hiddenInteractableTile;
     [SerializeField] private Tile interactedTile;
 
+    Dictionary<List<TileBase>, TileData> dataFromTiles;
     TileBase tile;
+    /*-------------------------------------------------------*/
+
+    private void Awake()
+    {
+        dataFromTiles = new Dictionary<List<TileBase>, TileData>();
+    }
+
+    
+
+    /*-------------------------------------------------------*/
+
     void Start()
     {
+        foreach (TileData tileData in tileDatas)
+        {
+            dataFromTiles.Add(tileData.tiles, tileData);
+        }
+
         // 농사 가능한 지역 찾아오기
         foreach (var position in interactableMap.cellBounds.allPositionsWithin)
         {
@@ -27,22 +46,33 @@ public class TileManager : MonoBehaviour
         }
     }
 
-    // Interactable 타일맵 정보 확인
-    public TileBase TileInfo(Vector3Int position, int state) // int를 enum 형태로 바꾸기
+    // Grid 위치(좌표) 확인
+    public Vector3Int GetGridPosition(Vector2 position, bool mousePosition)
     {
-        switch (state)
+        Vector3 worldPosition;
+        worldPosition = mousePosition ? Camera.main.ScreenToWorldPoint(position) : position; // 마우스 위치를 vector3로 가져옴
+
+        Vector3Int gridPosition = Groundtilemap.WorldToCell(worldPosition); // Vector3를 Vector3Int로 변경
+
+        return gridPosition;
+    }
+
+    // 타일맵 정보 확인
+    public TileBase TileInfo(Vector3Int position, TileName tiles)
+    {
+        switch (tiles)
         {
-            case 0:
+            case TileName.Interactable:
                 tile = interactableMap.GetTile(position);
                 break;
-            case 1:
+            case TileName.Summer_Plowed:
                 tile = cropsTileMap.GetTile(position);
                 break;
         }
         return tile;
     }
 
-    // 괭이질 가능 여부 확인 ? 사용가능 땅 확인 여부
+    // 사용 가능 땅 여부 확인
     public bool IsInteractable(Vector3Int position)
     {
         TileBase tile = interactableMap.GetTile(position);

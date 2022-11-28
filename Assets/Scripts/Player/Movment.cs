@@ -21,6 +21,7 @@ public class Movment : MonoBehaviour
         _inputReader.Inventory += OnInventory;
         _inputReader.Keypad += OnKeyPad;
         _inputReader.MouseClick += OnClick;
+        _inputReader.SingKey += OnSingle;
     }
 
     private void OnDisable()
@@ -29,6 +30,7 @@ public class Movment : MonoBehaviour
         _inputReader.Inventory -= OnInventory;
         _inputReader.Keypad -= OnKeyPad;
         _inputReader.MouseClick -= OnClick;
+        _inputReader.SingKey -= OnSingle;
     }
 
     void Update()
@@ -45,8 +47,9 @@ public class Movment : MonoBehaviour
 
     private void OnMove(Vector2 movement) { _inputVector = movement; }
     private void OnInventory() { UI_Manager.InventoryOnOff(); }
-    private void OnKeyPad(string number) { Toolbar_UI.checAlphaNumbericKeys(number); }
+    private void OnKeyPad(string number) { Toolbar_UI.checAlphaNumbericKeys(int.Parse(number)); }
     private void OnClick() { TileController.ClickEvent(Mouse.current.position.ReadValue()); }
+    private void OnSingle() { UI_Manager.SingleOnOff(); }
 
     void AnimateMovement(Vector3 direction)
     {

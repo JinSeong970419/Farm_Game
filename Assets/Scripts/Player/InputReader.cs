@@ -9,6 +9,7 @@ public class InputReader : ScriptableObject, PlayerControls.IPlayerActions
     public event UnityAction Inventory = delegate { };
     public event UnityAction<string> Keypad = delegate { };
     public event UnityAction MouseClick = delegate { };
+    public event UnityAction SingKey = delegate { };
 
     private PlayerControls _playerCtrl;
 
@@ -39,4 +40,6 @@ public class InputReader : ScriptableObject, PlayerControls.IPlayerActions
     public void OnMenuBar(InputAction.CallbackContext context) { if (context.started) { Keypad.Invoke(context.control.name); } }
 
     public void OnMouse(InputAction.CallbackContext context) { if (context.started) { MouseClick.Invoke(); } }
+
+    public void OnSingKey(InputAction.CallbackContext context) { if (context.started || context.canceled) { SingKey.Invoke(); } }
 }

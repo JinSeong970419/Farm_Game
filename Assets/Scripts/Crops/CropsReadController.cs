@@ -23,20 +23,11 @@ public class CropsReadController : MonoBehaviour
         }
     }
 
+    // 포인트 위치 값 반환
     public Vector3Int GetGridPosition(Vector2 position, bool mousePosition)
     {
         Vector3 worldPosition;
-
-
-        if (mousePosition)
-        {
-            worldPosition = Camera.main.ScreenToWorldPoint(position);
-        }
-        else
-        {
-            worldPosition = position;
-        }
-
+        worldPosition = mousePosition ? Camera.main.ScreenToWorldPoint(position) : position;
 
         Vector3Int gridPosition = tilemap.WorldToCell(worldPosition);
 

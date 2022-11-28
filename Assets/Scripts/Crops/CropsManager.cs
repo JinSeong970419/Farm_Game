@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class CropsManager : MonoBehaviour
 {
-    [SerializeField] Tilemap groundTilemap;
+    // [SerializeField] Tilemap groundTilemap;
     [SerializeField] Tilemap cropTilemap;
 
     // 농작물 정보
@@ -31,30 +31,33 @@ public class CropsManager : MonoBehaviour
     }
 
     // 작물 심기
-    public void SeedCrop(Vector3Int position, string name)
+    // 아이템 매니저 사용하기
+    public void SeedCrop(Vector3Int position, Cropseed name)
     {
         Crop cropSeeded;
         // Test 당근
-        if (name == "corn")
+        if (name == Cropseed.corn)
         {
             cropSeeded = Instantiate(corn); //옥수수를 복제하다
             cropSeeded.position = position; //위치 설정
-            cropSeeded.state = cropSeeded.state1; // 상태 초기화
-            cropSeeded.timeRemaining = 10; //성장시간 할당
+            cropSeeded.stateNow = cropSeeded.state[0]; // 상태 초기화
+            cropSeeded.stateIndex = 0; // 상태 초기화
+            cropSeeded.timeRemaining = 2; //성장시간 할당 - 추후 변경
             
             // 작물 위치 및 정보 추가
             crops.Add(position, cropSeeded);
             corns.Add(position, cropSeeded);
-            cropTilemap.SetTile(cropSeeded.position, cropSeeded.state); // 타일을 농작물로 변경
+            cropTilemap.SetTile(cropSeeded.position, cropSeeded.stateNow); // 타일을 농작물로 변경
         }
     }
 
     // 작물 물주기
     public void Water(Vector3Int position)
     {
-        crops[position].timerIsRunning = true; // 식물 자라게
-        // 타일을 젖은 지면에 바꾸기
-        GameManager.instance.tileManager.SetInteracted(position, wetground); // 타일 모아서 번경할까?
+        if (crops[position].stateIndex > crops[position].state.Length - 2) { return; } // 작물이 다 자랐다면 성장하지 않음
+
+        crops[position].timerIsRunning = true; // 식물을 자라게
+        GameManager.instance.tileManager.SetInteracted(position, wetground); // 타일을 젖은 지면으로 바꾸기
         //Debug.Log(crops[position].timeRemaining);
     }
 
@@ -70,33 +73,16 @@ public class CropsManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("성장 완료");
-                // 노가다.... 추후 변경
-                if (crop.state == crop.state0)
-                    crop.state = crop.state3;
-                else if (crop.state == crop.state1)
-                    crop.state = crop.state2;
-                else if (crop.state == crop.state2)
-                    crop.state = crop.state3;
-                else if (crop.state == crop.state3)
-                    crop.state = crop.state4;
-
-                // 농작물 및 바닥 타일 상태 변경
-                cropTilemap.SetTile(crop.position, crop.state);
-                GameManager.instance.tileManager.SetInteracted(crop.position, dryground);
-
                 // 농작물 성장 종료
                 crop.timerIsRunning = false;
+                crop.timeRemaining = 2;
+                GameManager.instance.tileManager.SetInteracted(crop.position, dryground);
 
-                // 농작물이 모두 성장하지 않았다면 성장 타임 초기화
-                if (crop.state != crop.state4)
-                {
-                    crop.timeRemaining = 2; // 테스트
-                }
-                else
-                {
-                    Debug.Log("성장 종료 - 수확");
-                }
+                crop.stateIndex = (crop.stateIndex + 1) % crop.state.Length;
+                crop.stateNow = crop.state[crop.stateIndex];
+                //Debug.Log($"성장 완료 : {crop.stateNow}");
+
+                cropTilemap.SetTile(crop.position, crop.stateNow);
             }
         }
     }

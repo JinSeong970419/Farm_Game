@@ -1893,8 +1893,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b9cab7dc4ace74590d4cc81f442df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Groundtilemap: {fileID: 972150887}
   interactableMap: {fileID: 1248455135}
   cropsTileMap: {fileID: 6170005}
+  tileDatas: []
   hiddenInteractableTile: {fileID: 11400000, guid: 15fb7fca25112b949a543bb28ba6a80e, type: 2}
   interactedTile: {fileID: 11400000, guid: 3714bb47135a3b74287045551e6043d7, type: 2}
 --- !u!114 &235068588
@@ -1965,7 +1967,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4759a34b57e624abf64bc894628655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundTilemap: {fileID: 972150887}
   cropTilemap: {fileID: 6170005}
   corn: {fileID: 11400000, guid: aa3425aab3ffc4548b1ebe1176c9522a, type: 2}
   wetground: {fileID: 11400000, guid: 211a0666e259d844fac5eb17c5466cf7, type: 2}

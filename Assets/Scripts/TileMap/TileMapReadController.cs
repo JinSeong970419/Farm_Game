@@ -8,19 +8,16 @@ public class TileMapReadController : MonoBehaviour
 {
     [SerializeField] Tilemap Groundtilemap;    // Ground 타일
     [SerializeField] List<TileData> tileDatas; // 타일 정보 변수
-    Dictionary<TileBase, TileData> dataFromTiles;
+    Dictionary<List<TileBase>, TileData> dataFromTiles;
+    //Dictionary<string, TileData> dataFromTiles;
 
+    List<TileData> test;
     private void Start()
     {
-        dataFromTiles = new Dictionary<TileBase, TileData>();
-
+        dataFromTiles = new Dictionary<List<TileBase>, TileData>();
         foreach (TileData tileData in tileDatas)
         {
-            foreach (TileBase tile in tileData.tiles)
-            {
-                Debug.Log($"타일 정보 확인 : {tileData.tiles}");
-                dataFromTiles.Add(tile, tileData);
-            }
+            dataFromTiles.Add(tileData.tiles, tileData);
         }
     }
 

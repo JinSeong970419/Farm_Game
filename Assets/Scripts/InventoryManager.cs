@@ -31,6 +31,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    // 인벤토리 이름으로 값 가져오기
     public Inventory GetInventoryByName(string inventoryName)
     {
         if (inventoryByName.ContainsKey(inventoryName))

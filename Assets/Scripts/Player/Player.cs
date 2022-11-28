@@ -12,20 +12,6 @@ public class Player : MonoBehaviour
         inventory = GetComponent<InventoryManager>();
     }
 
-    private void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0);
-        //    Debug.Log($"Player 위치 : {position}");
-        //    if (GameManager.instance.tileManager.IsInteractable(position))
-        //    {
-        //        Debug.Log("사용 가능 타일");
-        //        GameManager.instance.tileManager.SetInteracted(position);
-        //    }
-        //}
-    }
-
     // 아이템 버리기
     public void DropItem(Item item)
     {

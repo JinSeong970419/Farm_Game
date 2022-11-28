@@ -62,6 +62,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SingKey"",
+                    ""type"": ""Button"",
+                    ""id"": ""9ce436aa-024d-44a5-a967-489e95107955"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -251,6 +260,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Mouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4ae266ea-d9ab-40fe-9aa1-c4b8f6412560"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SingKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -263,6 +283,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_MenuBar = m_Player.FindAction("MenuBar", throwIfNotFound: true);
         m_Player_Mouse = m_Player.FindAction("Mouse", throwIfNotFound: true);
+        m_Player_SingKey = m_Player.FindAction("SingKey", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -326,6 +347,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_MenuBar;
     private readonly InputAction m_Player_Mouse;
+    private readonly InputAction m_Player_SingKey;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -334,6 +356,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @MenuBar => m_Wrapper.m_Player_MenuBar;
         public InputAction @Mouse => m_Wrapper.m_Player_Mouse;
+        public InputAction @SingKey => m_Wrapper.m_Player_SingKey;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -355,6 +378,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Mouse.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse;
                 @Mouse.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse;
                 @Mouse.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse;
+                @SingKey.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSingKey;
+                @SingKey.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSingKey;
+                @SingKey.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSingKey;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -371,6 +397,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Mouse.started += instance.OnMouse;
                 @Mouse.performed += instance.OnMouse;
                 @Mouse.canceled += instance.OnMouse;
+                @SingKey.started += instance.OnSingKey;
+                @SingKey.performed += instance.OnSingKey;
+                @SingKey.canceled += instance.OnSingKey;
             }
         }
     }
@@ -381,5 +410,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnInventory(InputAction.CallbackContext context);
         void OnMenuBar(InputAction.CallbackContext context);
         void OnMouse(InputAction.CallbackContext context);
+        void OnSingKey(InputAction.CallbackContext context);
     }
 }
