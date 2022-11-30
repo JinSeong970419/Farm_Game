@@ -63,8 +63,8 @@ public class Inventorys
 
         public void AddItem(Item item)
         {
-            this.itemName = item.data.itemName;
-            this.icon = item.data.icon;
+            //this.itemName = item.data.itemName;
+            //this.icon = item.data.icon;
             count++;
         }
 
@@ -104,23 +104,23 @@ public class Inventorys
 
     public void Add(Item item)
     {
-        foreach (Slot slot in slots)
-        {
-            if (slot.itemName == item.data.itemName && slot.CanAddItem(item.data.itemName))
-            {
-                slot.AddItem(item);
-                return;
-            }
-        }
+        //foreach (Slot slot in slots)
+        //{
+        //    if (slot.itemName == item.data.itemName && slot.CanAddItem(item.data.itemName))
+        //    {
+        //        slot.AddItem(item);
+        //        return;
+        //    }
+        //}
 
-        foreach (Slot slot in slots)
-        {
-            if (slot.itemName == "")
-            {
-                slot.AddItem(item);
-                return;
-            }
-        }
+        //foreach (Slot slot in slots)
+        //{
+        //    if (slot.itemName == "")
+        //    {
+        //        slot.AddItem(item);
+        //        return;
+        //    }
+        //}
     }
 
     public void Remove(int index)

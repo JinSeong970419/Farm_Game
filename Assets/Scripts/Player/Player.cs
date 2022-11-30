@@ -5,11 +5,19 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     //public InputReader _inputReader;
-    public InventoryManager inventory;
+    public InventoryObject inventory;
+    private BeasItem item;
 
     private void Awake()
     {
-        inventory = GetComponent<InventoryManager>();
+        //inventory = GetComponent<InventoryManager>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        item = collision.GetComponent<BeasItem>();
+        Destroy(collision.gameObject);
+        inventory.AddItem(new Item(item.item), 1);
     }
 
     // 아이템 버리기
@@ -19,9 +27,9 @@ public class Player : MonoBehaviour
 
         Vector3 spawnOffset = Random.insideUnitCircle * 1.25f; 
 
-        Item droppedItem = Instantiate(item, spawnLocation + spawnOffset, Quaternion.identity);
+        //Item droppedItem = Instantiate(item, spawnLocation + spawnOffset, Quaternion.identity);
 
-        droppedItem.rb2d.AddForce(spawnOffset * .2f, ForceMode2D.Impulse);
+        //droppedItem.rb2d.AddForce(spawnOffset * .2f, ForceMode2D.Impulse);
     }
 
     // 아이템  

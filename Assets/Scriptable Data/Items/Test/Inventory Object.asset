@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5e0f3b169dbc94688dc1f4aed335ff, type: 3}
   m_Name: Inventory Object
   m_EditorClassIdentifier: 
-  database: {fileID: 0}
+  database: {fileID: 11400000, guid: 241840992cbb1414292f70069c1dc059, type: 2}
   Container:
     Slots:
     - AllowedItems: 
       item:
-        Name: 
-        Id: -1
-      amount: 0
+        Name: Carrot
+        Id: 0
+      amount: 1
     - AllowedItems: 
       item:
         Name: 

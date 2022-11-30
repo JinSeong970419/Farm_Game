@@ -7,6 +7,7 @@ public class InventoryInterface : UserInterface
 {
     private void OnEnable()
     {
+        Debug.Log("dqwdqwdq");
         CreateSlots();
     }
 
@@ -15,6 +16,8 @@ public class InventoryInterface : UserInterface
         for (int i = 0; i < inventory.GetSlots.Length; i++)
         {
             var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
+            Debug.Log(obj.name);
+            obj.name = inventoryPrefab.name + i.ToString();
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
             //inventory.GetSlots[i].slotDisplay = obj;
             slotsOnInterface.Add(obj, inventory.GetSlots[i]);
