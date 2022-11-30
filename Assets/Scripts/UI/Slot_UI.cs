@@ -7,14 +7,14 @@ using TMPro;
 public class Slot_UI : MonoBehaviour
 {
     public int slotID;
-    public Inventory inventory;
+    public Inventorys inventory;
 
     public Image itemIcon;
     public TextMeshProUGUI quantityText;
 
     [SerializeField] private GameObject highlight;
 
-    public void SetItem(Inventory.Slot slot)
+    public void SetItem(Inventorys.Slot slot)
     {
         if (slot != null)
         {
@@ -23,7 +23,7 @@ public class Slot_UI : MonoBehaviour
             quantityText.text = slot.count.ToString();
         }
     }
-     
+
     public void SetEmpty()
     {
         itemIcon.sprite = null;

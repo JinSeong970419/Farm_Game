@@ -305,6 +305,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0fb1d74fe22afd44bbd60dd14c3051f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotID: 0
+  inventory:
+    slots: []
   itemIcon: {fileID: 5706470223848043796}
   quantityText: {fileID: 5706470224279610360}
   highlight: {fileID: 7350126201926676815}

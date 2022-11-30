@@ -26,8 +26,8 @@ public class CropsManager : MonoBehaviour
     private void Update()
     {
         // 모든 종류 작물 서치 후 성장
-        foreach(var crop in crops.Values)
-            Grow(crop);
+        //foreach (var crop in crops.Values)
+        //    Grow(crop);
     }
 
     // 작물 심기

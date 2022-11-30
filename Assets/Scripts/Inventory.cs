@@ -5,7 +5,26 @@ using UnityEngine;
 [System.Serializable]
 public class Inventory
 {
-    [System.Serializable]
+    public InventorySlot[] Slots = new InventorySlot[27];
+
+    // 컨테이너 초기화
+    public void Clear()
+    {
+        for (int i = 0; i < Slots.Length; i++)
+        {
+            //Slots[i].item = new Item();
+            Slots[i].amount = 0;
+        }
+    }
+
+    //public bool ContainsItem(ItemObject itemObject) { return Array.Find(Slots, i => i.item.Id == itemObject.data.Id) != null; }
+
+    //public bool ContainsItem(int id) { return Slots.FirstOrDefault(i => i.item.Id == id) != null; }
+}
+
+//[System.Serializable]
+public class Inventorys
+{
     public class Slot
     {
         public string itemName;
@@ -25,7 +44,7 @@ public class Inventory
         {
             get
             {
-                if(itemName == "" && count == 0)
+                if (itemName == "" && count == 0)
                 {
                     return true;
                 }
@@ -35,7 +54,7 @@ public class Inventory
 
         public bool CanAddItem(string itemName)
         {
-            if(this.itemName == itemName && count < maxAllowed)
+            if (this.itemName == itemName && count < maxAllowed)
             {
                 return true;
             }
@@ -59,11 +78,11 @@ public class Inventory
 
         public void RemoveItem()
         {
-            if(count > 0)
+            if (count > 0)
             {
                 count--;
 
-                if(count == 0)
+                if (count == 0)
                 {
                     icon = null;
                     itemName = "";
@@ -74,7 +93,7 @@ public class Inventory
 
     public List<Slot> slots = new List<Slot>();
 
-    public Inventory(int numSlots)
+    public Inventorys(int numSlots)
     {
         for (int i = 0; i < numSlots; i++)
         {
@@ -87,16 +106,16 @@ public class Inventory
     {
         foreach (Slot slot in slots)
         {
-            if(slot.itemName == item.data.itemName && slot.CanAddItem(item.data.itemName))
+            if (slot.itemName == item.data.itemName && slot.CanAddItem(item.data.itemName))
             {
                 slot.AddItem(item);
                 return;
             }
         }
 
-        foreach(Slot slot in slots)
+        foreach (Slot slot in slots)
         {
-            if(slot.itemName == "")
+            if (slot.itemName == "")
             {
                 slot.AddItem(item);
                 return;
@@ -111,7 +130,7 @@ public class Inventory
 
     public void Remove(int index, int numToRemove)
     {
-        if(slots[index].count >= numToRemove)
+        if (slots[index].count >= numToRemove)
         {
             for (int i = 0; i < numToRemove; i++)
             {
@@ -120,19 +139,20 @@ public class Inventory
         }
     }
 
-    public void MoveSlot(int fromIndex, int toIndex, Inventory toInventory, int numToMove = 1)
+    public void MoveSlot(int fromIndex, int toIndex, Inventorys toInventory, int numToMove = 1)
     {
         Slot fromSlot = slots[fromIndex];
         Slot toSlot = toInventory.slots[toIndex];
 
-        if(toSlot.IsEmpty || toSlot.CanAddItem(fromSlot.itemName))
+        if (toSlot.IsEmpty || toSlot.CanAddItem(fromSlot.itemName))
         {
             for (int i = 0; i < numToMove; i++)
             {
                 Debug.Log("실행 : " + i);
                 toSlot.AddItem(fromSlot.itemName, fromSlot.icon, fromSlot.maxAllowed);
-                fromSlot.RemoveItem(); 
+                fromSlot.RemoveItem();
             }
         }
     }
+
 }

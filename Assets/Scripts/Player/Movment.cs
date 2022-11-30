@@ -14,7 +14,7 @@ public class Movment : MonoBehaviour
     private Vector2 _inputVector;
 
     private Vector3 direction;
-
+    public InventoryController testInventory;
     private void OnEnable()
     {
         _inputReader.Movement += OnMove;
@@ -46,9 +46,12 @@ public class Movment : MonoBehaviour
     }
 
     private void OnMove(Vector2 movement) { _inputVector = movement; }
-    private void OnInventory() { UI_Manager.InventoryOnOff(); }
+    private void OnInventory() 
+    {
+        //UI_Manager.InventoryOnOff(); 
+    }
     private void OnKeyPad(string number) { Toolbar_UI.checAlphaNumbericKeys(int.Parse(number)); }
-    private void OnClick() { TileController.ClickEvent(Mouse.current.position.ReadValue()); }
+    private void OnClick() { TileController.ClickEvent(Mouse.current.position.ReadValue());}
     private void OnSingle() { UI_Manager.SingleOnOff(); }
 
     void AnimateMovement(Vector3 direction)

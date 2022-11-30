@@ -11,7 +11,7 @@ public class Inventory_UI : MonoBehaviour
 
     [SerializeField] private Canvas canvas;
 
-    private Inventory inventory;
+    private Inventorys inventory;
 
     private void Awake()
     {
@@ -20,10 +20,10 @@ public class Inventory_UI : MonoBehaviour
 
     private void Start()
     {
-        inventory = GameManager.instance.player.inventory.GetInventoryByName(inventoryName);
+        //inventory = GameManager.instance.player.inventory.GetInventoryByName(inventoryName);
 
-        SetupSlots();
-        Refresh();
+        //SetupSlots();
+        //Refresh();
     }
 
     public void Refresh()

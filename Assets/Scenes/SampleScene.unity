@@ -1826,9 +1826,7 @@ GameObject:
   - component: {fileID: 235068584}
   - component: {fileID: 235068588}
   - component: {fileID: 235068587}
-  - component: {fileID: 235068589}
   - component: {fileID: 235068591}
-  - component: {fileID: 235068590}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -1915,46 +1913,6 @@ MonoBehaviour:
   inventoryUIs:
   - {fileID: 1265758777}
   - {fileID: 291789526}
---- !u!114 &235068589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235068583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02c9b5eba5dd387478c35bd39ce3d55d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Groundtilemap: {fileID: 972150887}
-  tileDatas:
-  - {fileID: 11400000, guid: 08851432724662843a1c532e4e513b2c, type: 2}
-  - {fileID: 11400000, guid: 502a9906dd675864ba7c3f58392a694f, type: 2}
-  - {fileID: 11400000, guid: 999b5385040224f41804fc2995403774, type: 2}
-  - {fileID: 11400000, guid: f32babddb65e30349b9180671c9859ec, type: 2}
-  - {fileID: 11400000, guid: a38973bc3d5dc7540ac93ef9a61aa878, type: 2}
---- !u!114 &235068590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235068583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b762a3f5166101b49b679b1bff701c66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilemap: {fileID: 6170005}
-  cropDatas:
-  - {fileID: 11400000, guid: 42d9d7a284e82074d8403bfb908892a2, type: 2}
-  - {fileID: 11400000, guid: 2338f9ca8e932474596c5236fa30b3af, type: 2}
-  - {fileID: 11400000, guid: 80331047881c3364c8d157356bc20477, type: 2}
-  - {fileID: 11400000, guid: 0dc287446316f53409f6efda88b267ff, type: 2}
-  - {fileID: 11400000, guid: 9e7fe17ef641fd94db1af1eb75826ab3, type: 2}
-  - {fileID: 11400000, guid: 08e5bb7e4b117e340bb0bef3afb55a55, type: 2}
-  - {fileID: 11400000, guid: 04701e87b02a30042879416b97d3ed10, type: 2}
 --- !u!114 &235068591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5163,7 +5121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d89e0343565ca47b174b79dbe3cf8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileMapReadController: {fileID: 235068589}
+  tileMapReadController: {fileID: 0}
   cropsManager: {fileID: 235068591}
   maxDistance: 2
 --- !u!1 &403130524

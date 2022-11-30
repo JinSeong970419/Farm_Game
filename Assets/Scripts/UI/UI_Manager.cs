@@ -21,9 +21,9 @@ public class UI_Manager : MonoBehaviour
 
     private void Awake()
     {
-        Initialized();
-        InventoryOnOff = () => { ToggleInventoryUI(); };
-        SingleOnOff = () => { SingleKey(); };
+        //Initialized();
+        //InventoryOnOff = () => { ToggleInventoryUI(); };
+        //SingleOnOff = () => { SingleKey(); };
     }
 
     private void Initialized()

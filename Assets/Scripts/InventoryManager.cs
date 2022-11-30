@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    public Dictionary<string, Inventory> inventoryByName = new Dictionary<string, Inventory>();
+    public Dictionary<string, Inventorys> inventoryByName = new Dictionary<string, Inventorys>();
 
     [Header("Backpack")]
-    public Inventory backpack;
+    public Inventorys backpack;
     public int backpackSlotCount;
 
     [Header("Toolbar")]
-    public Inventory toolbar;
+    public Inventorys toolbar;
     public int toolbarSlotCount;
 
     private void Awake()
     {
-        backpack = new Inventory(backpackSlotCount);
-        toolbar = new Inventory(toolbarSlotCount);
+        backpack = new Inventorys(backpackSlotCount);
+        toolbar = new Inventorys(toolbarSlotCount);
 
         inventoryByName.Add("Backpack", backpack);
         inventoryByName.Add("Toolbar", toolbar);
@@ -32,7 +32,7 @@ public class InventoryManager : MonoBehaviour
     }
 
     // 인벤토리 이름으로 값 가져오기
-    public Inventory GetInventoryByName(string inventoryName)
+    public Inventorys GetInventoryByName(string inventoryName)
     {
         if (inventoryByName.ContainsKey(inventoryName))
         {
