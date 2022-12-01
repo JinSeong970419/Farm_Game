@@ -45,7 +45,7 @@ public class TileController : MonoBehaviour
     private void UseTool(Vector2 mousePosition) 
     {
         // 0. 인벤토리가 켜져 있을경우 사용하지 않음
-        if (GameManager.instance.uiManager.inventoryPanel.activeSelf) { return; }
+        if (GameManager.instance.tileManager.pissible) { return; }
 
         // 1. 선택된 타일의 정보 추출
         Vector2 mouseCurrentPosition = Mouse.current.position.ReadValue();

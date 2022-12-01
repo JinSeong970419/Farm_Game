@@ -32,6 +32,7 @@ public class InventoryObject : ScriptableObject
         return true;
     }
 
+    // 슬롯이 생성되지 않은 경우 체크
     public int EmptySlotCount
     {
         get
@@ -57,6 +58,7 @@ public class InventoryObject : ScriptableObject
         return null;
     }
 
+    // 인벤토리 찾기
     public InventorySlot FindItemOnInventory(Item _item)
     {
         for (int i = 0; i < GetSlots.Length; i++)
@@ -64,5 +66,24 @@ public class InventoryObject : ScriptableObject
             if (GetSlots[i].item.Id == _item.Id) { return GetSlots[i]; }
         }
         return null;
+    }
+
+    // 아이템 위치 변경
+    public void SwapItems(InventorySlot item1, InventorySlot item2)
+    {
+        // 바꾸고자 하는 아이템 정보가 위치를 변경할 수 있는지 확인 후 변경
+        if (item2.CanPlaceInSlot(item1.GetItemObject()) && item1.CanPlaceInSlot(item2.GetItemObject()))
+        {
+            InventorySlot temp = new InventorySlot(item2.item, item2.amount);
+            item2.UpdateSlot(item1.item, item1.amount);
+            item1.UpdateSlot(temp.item, temp.amount);
+        }
+    }
+
+    // 인벤 비우기 테스토
+    [ContextMenu("Clear")]
+    public void Clear()
+    {
+        Container.Clear();
     }
 }

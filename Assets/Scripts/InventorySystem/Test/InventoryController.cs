@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+// Movement ÇÕÄ¡±â?
 public class InventoryController : MonoBehaviour
 {
-    [SerializeField] private UIInventoryPage inventoryUI;
+    //[SerializeField] private UIInventoryPage inventoryUI;
+    [SerializeField] private InManager inventoryUI;
+    [SerializeField] private ToobarInterface ToolbarUI;
     public InputReader _inputReader;
 
-    public int inventorySize = 10;
+    public int inventorySize;
+    public int toolbarSize;
 
     private void OnEnable()
     {
@@ -20,9 +24,10 @@ public class InventoryController : MonoBehaviour
         _inputReader.Inventory -= OnInventory;
     }
 
-    private void Start()
+    private void Awake()
     {
         inventoryUI.InitializeInventoryUI(inventorySize);
+        ToolbarUI.InitializeInventoryUI(toolbarSize);
     }
 
     // Inventory Ui On/Off

@@ -14,6 +14,8 @@ public class TileManager : MonoBehaviour
     [SerializeField] private Tile interactedTile;
 
     Dictionary<List<TileBase>, TileData> dataFromTiles;
+
+    public bool pissible = true;
     TileBase tile;
     /*-------------------------------------------------------*/
 

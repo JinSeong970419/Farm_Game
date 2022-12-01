@@ -20,24 +20,24 @@ public class Player : MonoBehaviour
         inventory.AddItem(new Item(item.item), 1);
     }
 
-    // 아이템 버리기
-    public void DropItem(Item item)
-    {
-        Vector3 spawnLocation = transform.position;
+    //// 아이템 버리기
+    //public void DropItem(Item item)
+    //{
+    //    Vector3 spawnLocation = transform.position;
 
-        Vector3 spawnOffset = Random.insideUnitCircle * 1.25f; 
+    //    Vector3 spawnOffset = Random.insideUnitCircle * 1.25f; 
 
-        //Item droppedItem = Instantiate(item, spawnLocation + spawnOffset, Quaternion.identity);
+    //    //Item droppedItem = Instantiate(item, spawnLocation + spawnOffset, Quaternion.identity);
 
-        //droppedItem.rb2d.AddForce(spawnOffset * .2f, ForceMode2D.Impulse);
-    }
+    //    //droppedItem.rb2d.AddForce(spawnOffset * .2f, ForceMode2D.Impulse);
+    //}
 
-    // 아이템  
-    public void DropItem(Item item, int numToDrop)
-    {
-        for (int i = 0; i < numToDrop; i++)
-        {
-            DropItem(item);
-        }
-    }
+    //// 아이템  
+    //public void DropItem(Item item, int numToDrop)
+    //{
+    //    for (int i = 0; i < numToDrop; i++)
+    //    {
+    //        DropItem(item);
+    //    }
+    //}
 }

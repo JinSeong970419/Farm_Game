@@ -1,99 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class UIInventoryPage : MonoBehaviour
+public abstract class UIInventoryPage : MonoBehaviour
 {
-    // 슬롯 프리팹
-    [SerializeField] private UIInventoryItem itemPrefab;
+    [SerializeField] protected UIInventoryItem itemPrefab; // 슬롯 프리팹
+    [SerializeField] protected RectTransform contentPanel; // 슬롯 생성 오브젝트
 
-    [SerializeField] private RectTransform contentPanel;
-    public InventoryObject inventory;
+    [SerializeField] public InventoryObject inventory; // 인벤토리 데이터
 
-    [SerializeField] private UIInventoryDescription itemDescription;
-
-    //List<UIInventoryItem> listOfUIItems = new List<UIInventoryItem>();
     public Dictionary<UIInventoryItem, InventorySlot> slotsOnInterface = new Dictionary<UIInventoryItem, InventorySlot>();
 
-    public Sprite image;
-    public int quantity;
-    public string title, description;
-
-    private void OnEnable()
-    {
-        for (int i = 0; i < inventory.GetSlots.Length; i++)
-        {
-            inventory.GetSlots[i].parent = this;
-            inventory.GetSlots[i].onAfterUpdated += OnslotUpdate;
-        }
-    }
-
-    private void OnslotUpdate(InventorySlot _slot)
-    {
-        Debug.Log("업데이트 이벤트 2");
-        if (_slot.item.Id <= -1)
-        {
-            _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
-            _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
-            //_slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = string.Empty;
-
-        }
-        else
-        {
-
-            _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().gameObject.SetActive(true);
-            _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = _slot.GetItemObject().uiDisplay;
-            _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
-            //_slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = _slot.amount == 1 ? string.Empty : _slot.amount.ToString("n0");
-        }
-    }
-
-    private void Awake()
-    {
-        Hide();
-        itemDescription.ResetDescription();
-    }
-
     // 인벤토리 슬롯 생성
-    public void InitializeInventoryUI(int inventorysize)
-    {
-        for (int i = 0; i < inventorysize; i++)
-        {
-            UIInventoryItem uiItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity);
-            uiItem.transform.SetParent(contentPanel);
-            uiItem.gameObject.name = itemPrefab.name + i.ToString();
-
-            inventory.GetSlots[i].slotDisplay = uiItem;
-            slotsOnInterface.Add(uiItem, inventory.GetSlots[i]);
-
-            // 핸들러 연결
-            uiItem.OnItemClicked += HandleItemSelection;
-            uiItem.OnItemDrag += HandleDrag;
-            uiItem.OnItemBeginDrag += HandleBeginDrag;
-            uiItem.OnItemEndDrag += HandleEndDrag;
-            uiItem.OnItemDroppedOn += HandleSwap;
-            uiItem.OnRightMouseBtnClick += HandleShowItemActions;
-        }
-    }
+    public abstract void InitializeInventoryUI(int inventorySize);
 
     // 좌클릭
-    private void HandleItemSelection(UIInventoryItem obj)
+    protected void HandleItemSelection(UIInventoryItem obj)
     {
         // 아이템 설명 창
-        itemDescription.SetDescription(image, title, description);
-        //listOfUIItems[0].Select();
+        if(slotsOnInterface[obj].item.Id > -1)
+        {
+            Debug.Log("설명중~");
+            //itemDescription.SetDescription(slotsOnInterface[obj].GetItemObject());
+        }
+    }
+
+    // 우클릭
+    protected void HandleShowItemActions(UIInventoryItem obj)
+    {
     }
 
     // Drag
     // 1. 시작
-    private void HandleBeginDrag(UIInventoryItem obj)
+    protected void HandleBeginDrag(UIInventoryItem obj)
     {
-        MouseData.tempItemBeingDragged = CreateTempItem(obj);
+        MouseData.slotHoveredOver = slotsOnInterface[obj];   // 시작 슬롯 정보
+        MouseData.tempItemBeingDragged = CreateTempItem(obj); // drag 이미지 생성
     }
     // 2. 진행
-    private void HandleDrag(UIInventoryItem obj)
+    protected void HandleDrag(UIInventoryItem obj)
     {
         if (MouseData.tempItemBeingDragged != null)
         {
@@ -102,30 +51,29 @@ public class UIInventoryPage : MonoBehaviour
     }
 
     // 3. 종료
-    private void HandleEndDrag(UIInventoryItem obj)
+    protected void HandleEndDrag(UIInventoryItem obj)
     {
-        //mouseFollower.Toggle(false);
-
         Destroy(MouseData.tempItemBeingDragged);
         // 아이템 삭제
-        if (MouseData.interfaceMouseIsOver == null)
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
             slotsOnInterface[obj].RemoveItem();
-            return;
         }
         // 아이템 위치 변경
+        else if (MouseData.interfaceMouseIsOver != null)
+        {
+            inventory.SwapItems(MouseData.slotHoveredOver, MouseData.interfaceMouseIsOver);
+            MouseData.interfaceMouseIsOver = null;
+        }
     }
 
-    private void HandleSwap(UIInventoryItem obj)
+    protected void HandleSwap(UIInventoryItem obj)
     {
+        MouseData.interfaceMouseIsOver = slotsOnInterface[obj]; // 도착 슬롯 정보
     }
 
-
-    private void HandleShowItemActions(UIInventoryItem obj)
-    {
-    }
-
-    public GameObject CreateTempItem(UIInventoryItem obj)
+    // 아이템 드레그 중 아이콘 생성
+    protected GameObject CreateTempItem(UIInventoryItem obj)
     {
         GameObject temItem = null;
         if (slotsOnInterface[obj].item.Id >= 0)
@@ -141,17 +89,4 @@ public class UIInventoryPage : MonoBehaviour
         }
         return temItem;
     }
-
-    #region 인벤토리 On/Off
-    // 인벤토리 온오프 
-    public void Show()
-    {
-        gameObject.SetActive(true);
-    }
-
-    public void Hide()
-    {
-        gameObject.SetActive(false);
-    }
-    #endregion 
 }

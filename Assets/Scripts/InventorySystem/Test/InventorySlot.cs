@@ -8,6 +8,7 @@ public class InventorySlot
 
     [NonSerialized] public UIInventoryPage parent;
     [NonSerialized] public UIInventoryItem slotDisplay;
+    //[NonSerialized] public GameObject slotDisplay;
 
     [NonSerialized] public Action<InventorySlot> onAfterUpdated;
     [NonSerialized] public Action<InventorySlot> onBeforeUpdated;
@@ -33,11 +34,10 @@ public class InventorySlot
     public void UpdateSlot(Item itemValue, int amountValue)
     {
         // 장비창 및 인벤토리창 아이템 전부 삭제 후 불러오기
-        //onBeforeUpdated?.Invoke(this);
         item = itemValue;
         amount = amountValue;
         onAfterUpdated?.Invoke(this);
-        Debug.Log("업데이트 이벤트 발생");
+        onBeforeUpdated?.Invoke(this);
     }
 
     // 교환이 가능한지 여부 확인

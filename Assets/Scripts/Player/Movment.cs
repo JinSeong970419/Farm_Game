@@ -50,9 +50,12 @@ public class Movment : MonoBehaviour
     {
         //UI_Manager.InventoryOnOff(); 
     }
-    private void OnKeyPad(string number) { Toolbar_UI.checAlphaNumbericKeys(int.Parse(number)); }
-    private void OnClick() { TileController.ClickEvent(Mouse.current.position.ReadValue());}
-    private void OnSingle() { UI_Manager.SingleOnOff(); }
+    private void OnKeyPad(string number) { /*Toolbar_UI.checAlphaNumbericKeys(int.Parse(number)); */}
+    private void OnClick() 
+    {
+        TileController.ClickEvent(Mouse.current.position.ReadValue());
+    }
+    private void OnSingle() {/* UI_Manager.SingleOnOff(); */}
 
     void AnimateMovement(Vector3 direction)
     {

@@ -1,28 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class Slot_UI : MonoBehaviour
 {
     public int slotID;
-    public Inventorys inventory;
+    public Inventory inventory;
 
     public Image itemIcon;
     public TextMeshProUGUI quantityText;
 
     [SerializeField] private GameObject highlight;
 
-    public void SetItem(Inventorys.Slot slot)
-    {
-        if (slot != null)
-        {
-            itemIcon.sprite = slot.icon;
-            itemIcon.color = new Color(1, 1, 1, 1);
-            quantityText.text = slot.count.ToString();
-        }
-    }
+    //public void SetItem(Inventory.Slot slot)
+    //{
+    //    if (slot != null)
+    //    {
+    //        itemIcon.sprite = slot.icon;
+    //        itemIcon.color = new Color(1, 1, 1, 1);
+    //        quantityText.text = slot.count.ToString();
+    //    }
+    //}
 
     public void SetEmpty()
     {
@@ -31,7 +31,7 @@ public class Slot_UI : MonoBehaviour
         quantityText.text = "";
     }
 
-    // 선택 바 highlight 설정
+    // 하이라이트 설정
     public void SetHighlight(bool isOn)
     {
         highlight.SetActive(isOn);

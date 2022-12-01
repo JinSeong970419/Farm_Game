@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,7 +8,7 @@ public class Toolbar_UI : MonoBehaviour
     [SerializeField] private List<Slot_UI> toolbarSlots = new List<Slot_UI>();
 
     private Slot_UI selectedSlot;
-    public static UnityAction<int> checAlphaNumbericKeys; // ÀÎº¥Åä¸® ¿Â¿ÀÇÁ ±â´É
+    public static UnityAction<int> checAlphaNumbericKeys; // ì¸ë²¤í† ë¦¬ ì˜¨ì˜¤í”„ ê¸°ëŠ¥
 
     private void Awake()
     {
@@ -17,21 +17,21 @@ public class Toolbar_UI : MonoBehaviour
 
     private void Start()
     {
-        SelectSlot(); // ÃßÈÄ º¯°æ
+        SelectSlot(); // ì¶”í›„ ë³€ê²½
     }
 
-    // ¼±ÅÃµÈ ½½·ÔÃ¢ Ç¥½Ã
+    // ì„ íƒëœ ìŠ¬ë¡¯ì°½ í‘œì‹œ
     public void SelectSlot(int number = 1)
     {
-        if(toolbarSlots.Count == 9)
+        if (toolbarSlots.Count == 9)
         {
             if (selectedSlot != null)
             {
                 selectedSlot.SetHighlight(false);
             }
-            selectedSlot = toolbarSlots[number-1];
+            selectedSlot = toolbarSlots[number - 1];
             selectedSlot.SetHighlight(true);
-            //Debug.Log("¼±ÅÃµÈ ½½·Ô : " + selectedSlot.name);
+            //Debug.Log("ì„ íƒëœ ìŠ¬ë¡¯ : " + selectedSlot.name);
         }
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,12 +8,9 @@ public class UIInventoryDescription : MonoBehaviour
     [SerializeField] private TMP_Text title;
     [SerializeField] private TMP_Text description;
 
+    public void Awake() { ResetDescription(); }
 
-    public void Awake()
-    {
-        ResetDescription();
-    }
-
+    // 아이템 설명창 초기화
     public void ResetDescription()
     {
         itemImage.gameObject.SetActive(false);
@@ -23,11 +18,12 @@ public class UIInventoryDescription : MonoBehaviour
         description.text = "";
     }
 
-    public void SetDescription(Sprite sprite, string itemName, string itemDescription)
+    // 아이템 설명창 추가
+    public void SetDescription(ItemObject obj)
     {
         itemImage.gameObject.SetActive(true);
-        itemImage.sprite = sprite;
-        title.text = itemName;
-        description.text = itemDescription;
+        itemImage.sprite = obj.uiDisplay;
+        title.text = obj.ObjName;
+        description.text = obj.description;
     }
 }
