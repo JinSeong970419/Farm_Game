@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca060bd41fd53ea4d9df2e6f284d481d, type: 3}
+  m_Name: IsMoveEnter
+  m_EditorClassIdentifier: 
+  description: "\uD50C\uB808\uC774\uC5B4 \uC774\uB3D9\uC2DC \uC2E4\uD589\uB418\uB294
+    \uC560\uB2C8\uBA54\uC774\uC158"
+  parameterType: 0
+  parmetName: isMoving
+  boolValue: 1
+  intValue: 0
+  floatValue: 0
+  moment: 0

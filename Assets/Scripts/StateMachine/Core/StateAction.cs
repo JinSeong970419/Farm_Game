@@ -1,6 +1,6 @@
-using UOP1.StateMachine.ScriptableObjects;
+using FarmGame.StateMachine.ScriptableObjects;
 
-namespace UOP1.StateMachine
+namespace FarmGame.StateMachine
 {
 	// Action 나타내는 개체
 	public abstract class StateAction : IStateComponent

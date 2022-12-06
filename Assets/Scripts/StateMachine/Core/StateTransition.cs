@@ -1,4 +1,4 @@
-namespace UOP1.StateMachine
+namespace FarmGame.StateMachine
 {
 	public class StateTransition : IStateComponent
 	{

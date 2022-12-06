@@ -1,37 +1,37 @@
-﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+// ToolBar 슬롯
 public class Toolbar_UI : MonoBehaviour
 {
-    [SerializeField] private List<Slot_UI> toolbarSlots = new List<Slot_UI>();
+    private UIInventoryItem[] toolbarSlots;
+    private List<UIInventoryItem> Slots = new List<UIInventoryItem>();
 
-    private Slot_UI selectedSlot;
-    public static UnityAction<int> checAlphaNumbericKeys; // 인벤토리 온오프 기능
+    public static UnityAction<int> checAlphaNumbericKeys; // 슬롯 선택
 
+    private int currentNum;
     private void Awake()
     {
-        checAlphaNumbericKeys = (int number) => { SelectSlot(number); };
+        checAlphaNumbericKeys = (int newNumber) => SelectSlot(newNumber);
     }
 
     private void Start()
     {
-        SelectSlot(); // 추후 변경
+        currentNum = 0;
+        toolbarSlots = GetComponentsInChildren<UIInventoryItem>();
+        foreach (var toolbarSlot in toolbarSlots)
+        {
+            Slots.Add(toolbarSlot);
+        }
+        SelectSlot();
     }
 
     // 선택된 슬롯창 표시
-    public void SelectSlot(int number = 1)
+    public void SelectSlot(int newNumber = 1)
     {
-        if (toolbarSlots.Count == 9)
-        {
-            if (selectedSlot != null)
-            {
-                selectedSlot.SetHighlight(false);
-            }
-            selectedSlot = toolbarSlots[number - 1];
-            selectedSlot.SetHighlight(true);
-            //Debug.Log("선택된 슬롯 : " + selectedSlot.name);
-        }
+        Slots[currentNum].borderImage.enabled = false;
+        Slots[newNumber - 1].borderImage.enabled = true;
+        currentNum = newNumber - 1;
     }
 }

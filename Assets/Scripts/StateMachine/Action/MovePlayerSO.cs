@@ -1,6 +1,6 @@
 using UnityEngine;
-using UOP1.StateMachine;
-using UOP1.StateMachine.ScriptableObjects;
+using FarmGame.StateMachine;
+using FarmGame.StateMachine.ScriptableObjects;
 
 [CreateAssetMenu(fileName = "MovementVector", menuName = "State Machines/Actions/Movement Vector")]
 public class MovePlayerSO : StateActionSO<MovePlayer> { }
@@ -16,6 +16,6 @@ public class MovePlayer : StateAction
 
     public override void OnUpdate()
     {
-        _movement.gameObject.transform.position += _movement.movementVector * Time.deltaTime;
+        _movement.gameObject.transform.position += _movement.movementVector;
     }
 }

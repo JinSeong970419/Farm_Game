@@ -1,21 +1,21 @@
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Tilemaps;
+//using System.Collections.Generic;
+//using UnityEngine;
+//using UnityEngine.Tilemaps;
 
-[CreateAssetMenu(menuName = "Data/TileData")]
-// Å¸ÀÏ µ¥ÀÌÅÍ
-public class TileData : ScriptableObject
-{
-    public List<TileBase> tiles; // Å¸ÀÏ Base
-    //public TileBase tiles; // Å¸ÀÏ Base
+//[CreateAssetMenu(menuName = "Data/TileData")]
+//// íƒ€ì¼ ë°ì´í„°
+//public class TileData : ScriptableObject
+//{
+//    public List<TileBase> tiles; // íƒ€ì¼ Base
+//    //public TileBase tiles; // íƒ€ì¼ Base
 
-    public bool plowable; // °æÀÛ°¡´É Å¸ÀÏ
+//    public bool plowable; // ê²½ì‘ê°€ëŠ¥ íƒ€ì¼
 
-    public bool ableToMow; // º£±â °¡´É Å¸ÀÏ
+//    public bool ableToMow; // ë² ê¸° ê°€ëŠ¥ íƒ€ì¼
 
-    public bool ableToSeed; // ¾¾¾Ñ½É±â °¡´É Å¸ÀÏ
+//    public bool ableToSeed; // ì”¨ì•—ì‹¬ê¸° ê°€ëŠ¥ íƒ€ì¼
 
-    public bool waterable; // ¹°À» ÁÙ ¼ö ÀÖ´Â Å¸ÀÏ
+//    public bool waterable; // ë¬¼ì„ ì¤„ ìˆ˜ ìˆëŠ” íƒ€ì¼
 
-    //public bool collectible; // ¼öÁıÇ° °ü·Ã Å¸ÀÏ
-}
+//    //public bool collectible; // ìˆ˜ì§‘í’ˆ ê´€ë ¨ íƒ€ì¼
+//}

@@ -8,70 +8,66 @@ public class CropsManager : MonoBehaviour
     // [SerializeField] Tilemap groundTilemap;
     [SerializeField] Tilemap cropTilemap;
 
-    // ³óÀÛ¹° Á¤º¸
+    // ë†ì‘ë¬¼ ì •ë³´
     public Dictionary<Vector3Int, Crop> crops;
-
-    public Dictionary<Vector3Int, Crop> corns;
     public Crop corn;
 
-    // Å¸ÀÏ Á¤º¸
+    // íƒ€ì¼ ì •ë³´
     [SerializeField] private Tile wetground;
     [SerializeField] private Tile dryground;
 
     private void Start()
     {
         crops = new Dictionary<Vector3Int, Crop>();
-        corns = new Dictionary<Vector3Int, Crop>();
     }
 
-    // ÀÛ¹° ½É±â
-    // ¾ÆÀÌÅÛ ¸Å´ÏÀú »ç¿ëÇÏ±â
+    // ì‘ë¬¼ ì‹¬ê¸°
+    // ì•„ì´í…œ ë§¤ë‹ˆì € ì‚¬ìš©í•˜ê¸°
     public void SeedCrop(Vector3Int position, Cropseed name)
     {
         Crop cropSeeded;
-        // Test ´ç±Ù
+        // Test ë‹¹ê·¼
         if (name == Cropseed.corn)
         {
-            cropSeeded = Instantiate(corn); //¿Á¼ö¼ö¸¦ º¹Á¦ÇÏ´Ù
-            cropSeeded.position = position; //À§Ä¡ ¼³Á¤
-            cropSeeded.stateNow = cropSeeded.state[0]; // »óÅÂ ÃÊ±âÈ­
-            cropSeeded.stateIndex = 0; // »óÅÂ ÃÊ±âÈ­
-            cropSeeded.timeRemaining = 2; //¼ºÀå½Ã°£ ÇÒ´ç - ÃßÈÄ º¯°æ
+            cropSeeded = Instantiate(corn); //ì˜¥ìˆ˜ìˆ˜ë¥¼ ë³µì œí•˜ë‹¤
+            cropSeeded.position = position; //ìœ„ì¹˜ ì„¤ì •
+            cropSeeded.stateNow = cropSeeded.state[0]; // ìƒíƒœ ì´ˆê¸°í™”
+            cropSeeded.stateIndex = 0; // ìƒíƒœ ì´ˆê¸°í™”
+            cropSeeded.timeRemaining = 2; //ì„±ì¥ì‹œê°„ í• ë‹¹ - ì¶”í›„ ë³€ê²½
             
-            // ÀÛ¹° À§Ä¡ ¹× Á¤º¸ Ãß°¡
+            // ì‘ë¬¼ ìœ„ì¹˜ ë° ì •ë³´ ì¶”ê°€
             crops.Add(position, cropSeeded);
-            corns.Add(position, cropSeeded);
-            cropTilemap.SetTile(cropSeeded.position, cropSeeded.stateNow); // Å¸ÀÏÀ» ³óÀÛ¹°·Î º¯°æ
+            cropTilemap.SetTile(cropSeeded.position, cropSeeded.stateNow); // íƒ€ì¼ì„ ë†ì‘ë¬¼ë¡œ ë³€ê²½
         }
     }
 
-    // ÀÛ¹° ¹°ÁÖ±â
+    // ì‘ë¬¼ ë¬¼ì£¼ê¸°
     public void Water(Vector3Int position)
     {
-        if (crops[position].stateIndex > crops[position].state.Length - 2) { return; } // ÀÛ¹°ÀÌ ´Ù ÀÚ¶ú´Ù¸é ¼ºÀåÇÏÁö ¾ÊÀ½
+        if (crops[position].stateIndex > crops[position].state.Length - 2) { return; } // ì‘ë¬¼ì´ ë‹¤ ìëë‹¤ë©´ ì„±ì¥í•˜ì§€ ì•ŠìŒ
 
-        crops[position].timerIsRunning = true; // ½Ä¹°À» ÀÚ¶ó°Ô ¾µ¸ğ¾ø´Â ÀÛ¾÷
-        GameManager.instance.tileManager.SetInteracted(position, wetground); // Å¸ÀÏÀ» Á¥Àº Áö¸éÀ¸·Î ¹Ù²Ù±â
+        crops[position].timerIsRunning = true; // ì‹ë¬¼ì„ ìë¼ê²Œ ì“¸ëª¨ì—†ëŠ” ì‘ì—…
+        GameManager.instance.tileManager.SetInteracted(position, wetground); // íƒ€ì¼ì„ ì –ì€ ì§€ë©´ìœ¼ë¡œ ë°”ê¾¸ê¸°
         //Debug.Log(crops[position].timeRemaining);
 
         StartCoroutine(WaitForIt(crops[position]));
     }
 
-    // ÀÛ¹° ¼ºÀå
+    // ì‘ë¬¼ ì„±ì¥
     IEnumerator WaitForIt(Crop crop)
     {
         yield return new WaitForSeconds(crop.timeRemaining);
 
-        // ³óÀÛ¹° ¼ºÀå Á¾·á
+        // ë†ì‘ë¬¼ ì„±ì¥ ì¢…ë£Œ
         crop.timerIsRunning = false;
         crop.timeRemaining = 2;
         GameManager.instance.tileManager.SetInteracted(crop.position, dryground);
 
         crop.stateIndex = (crop.stateIndex + 1) % crop.state.Length;
         crop.stateNow = crop.state[crop.stateIndex];
-        //Debug.Log($"¼ºÀå ¿Ï·á : {crop.stateNow}");
+        //Debug.Log($"ì„±ì¥ ì™„ë£Œ : {crop.stateNow}");
 
-        // ÀÛ¹° º¯°æ
+        // ì‘ë¬¼ ë³€ê²½
         cropTilemap.SetTile(crop.position, crop.stateNow);
     }
 }

@@ -1,6 +1,6 @@
-using UOP1.StateMachine.ScriptableObjects;
+using FarmGame.StateMachine.ScriptableObjects;
 
-namespace UOP1.StateMachine
+namespace FarmGame.StateMachine
 {
 	public class State
 	{

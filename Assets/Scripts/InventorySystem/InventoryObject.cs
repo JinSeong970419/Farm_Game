@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Inventory Object", menuName = "Inventory System/Inventory")]
@@ -11,14 +8,14 @@ public class InventoryObject : ScriptableObject
     [SerializeField] public Inventory Container = new Inventory();
     public InventorySlot[] GetSlots => Container.Slots;
 
-    // ¾ÆÀÌÅÛ Ãß°¡
+    // ì•„ì´í…œ ì¶”ê°€
     public bool AddItem(Item _item, int _amount)
     {
         if (EmptySlotCount <= 0) { return false; }
 
         if (GetEmptySlot() == null)
         {
-            Debug.Log("°¡µæ Ã¡À½");
+            Debug.Log("ê°€ë“ ì°¼ìŒ");
             return false;
         }
 
@@ -32,7 +29,7 @@ public class InventoryObject : ScriptableObject
         return true;
     }
 
-    // ½½·ÔÀÌ »ı¼ºµÇÁö ¾ÊÀº °æ¿ì Ã¼Å©
+    // ìŠ¬ë¡¯ì´ ìƒì„±ë˜ì§€ ì•Šì€ ê²½ìš° ì²´í¬
     public int EmptySlotCount
     {
         get
@@ -46,7 +43,7 @@ public class InventoryObject : ScriptableObject
         }
     }
 
-    // ºó slot Ã£±â
+    // ë¹ˆ slot ì°¾ê¸°
     public InventorySlot GetEmptySlot()
     {
         for (int i = 0; i < GetSlots.Length; i++)
@@ -54,11 +51,11 @@ public class InventoryObject : ScriptableObject
             if (GetSlots[i].item.Id <= -1) { return GetSlots[i]; }
         }
 
-        // ÀÎº¥Åä¸®°¡ °¡µæÃ¡À» °æ¿ì
+        // ì¸ë²¤í† ë¦¬ê°€ ê°€ë“ì°¼ì„ ê²½ìš°
         return null;
     }
 
-    // ÀÎº¥Åä¸® Ã£±â
+    // ì¸ë²¤í† ë¦¬ ì°¾ê¸°
     public InventorySlot FindItemOnInventory(Item _item)
     {
         for (int i = 0; i < GetSlots.Length; i++)
@@ -68,10 +65,10 @@ public class InventoryObject : ScriptableObject
         return null;
     }
 
-    // ¾ÆÀÌÅÛ À§Ä¡ º¯°æ
+    // ì•„ì´í…œ ìœ„ì¹˜ ë³€ê²½
     public void SwapItems(InventorySlot item1, InventorySlot item2)
     {
-        // ¹Ù²Ù°íÀÚ ÇÏ´Â ¾ÆÀÌÅÛ Á¤º¸°¡ À§Ä¡¸¦ º¯°æÇÒ ¼ö ÀÖ´ÂÁö È®ÀÎ ÈÄ º¯°æ
+        // ë°”ê¾¸ê³ ì í•˜ëŠ” ì•„ì´í…œ ì •ë³´ê°€ ìœ„ì¹˜ë¥¼ ë³€ê²½í•  ìˆ˜ ìˆëŠ”ì§€ í™•ì¸ í›„ ë³€ê²½
         if (item2.CanPlaceInSlot(item1.GetItemObject()) && item1.CanPlaceInSlot(item2.GetItemObject()))
         {
             InventorySlot temp = new InventorySlot(item2.item, item2.amount);
@@ -80,10 +77,7 @@ public class InventoryObject : ScriptableObject
         }
     }
 
-    // ÀÎº¥ ºñ¿ì±â Å×½ºÅä
+    // ì¸ë²¤ ë¹„ìš°ê¸° í…ŒìŠ¤í† 
     [ContextMenu("Clear")]
-    public void Clear()
-    {
-        Container.Clear();
-    }
+    public void Clear() { Container.Clear(); }
 }

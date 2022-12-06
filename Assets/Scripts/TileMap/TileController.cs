@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -20,84 +18,70 @@ public enum Cropseed
 
 public class TileController : MonoBehaviour
 {
-    [SerializeField] TileMapReadController tileMapReadController;
     [SerializeField] CropsManager cropsManager;
+    private Movement _movement;
 
-    public static UnityAction<Vector2> ClickEvent;
+    public static UnityAction<Vector2> ClickEvent; // ÎßàÏö∞Ïä§ Ïù¥Î≤§Ìä∏
+
+    public Vector2 mouseCurrentPosition;
+    public Vector3Int gridPosition;
 
     [SerializeField] float maxDistance = 2f;
 
-    //Vector3Int selectedTilePosition;
-
-    //public static Dictionary<Vector2Int, TileData> fields;
-
-
     private void Awake()
     {
+        _movement = GetComponent<Movement>();
         ClickEvent = (Vector2 mousePosition) => UseTool(mousePosition);
-    }
-
-    private void Start()
-    {
-        //fields = new Dictionary<Vector2Int, TileData>();
     }
 
     private void UseTool(Vector2 mousePosition) 
     {
-        // 0. ¿Œ∫•≈‰∏Æ∞° ƒ—¡Æ ¿÷¿ª∞ÊøÏ ªÁøÎ«œ¡ˆ æ ¿Ω
+        // 0. Ïù∏Î≤§ÌÜ†Î¶¨Í∞Ä ÏºúÏ†∏ ÏûàÏùÑÍ≤ΩÏö∞, Ïï†ÎãàÎ©îÏù¥ÏÖòÏù¥ ÎèôÏûëÌïòÎäî Í≤ΩÏö∞, Ï∫êÎ¶≠ÌÑ∞Í∞Ä ÏõÄÏßÅÏùº Í≤ΩÏö∞ ÏÇ¨Ïö©ÌïòÏßÄ ÏïäÏùå
         if (GameManager.instance.tileManager.pissible) { return; }
+        if (_movement.AnimTime) { return; }
+        if (_movement.direction.sqrMagnitude > 0) { return; }
 
-        // 1. º±≈√µ» ≈∏¿œ¿« ¡§∫∏ √ﬂ√‚
-        Vector2 mouseCurrentPosition = Mouse.current.position.ReadValue();
-        Vector3Int gridPosition = GameManager.instance.tileManager.GetGridPosition(mouseCurrentPosition, true);
+        // 1. ÏÑ†ÌÉùÎêú ÌÉÄÏùºÏùò Ï†ïÎ≥¥ Ï∂îÏ∂ú
+        mouseCurrentPosition = Mouse.current.position.ReadValue();
+        gridPosition = GameManager.instance.tileManager.GetGridPosition(mouseCurrentPosition, true);
         TileBase tileName = GameManager.instance.tileManager.TileInfo(gridPosition, TileName.Interactable);
 
-        // ≈∏¿œ ¿Ã∏ß ≈◊Ω∫∆Æ
-        // Debug.Log(tileName.name);
-
-        // 2. ≈∏¿œ¿« ªÛ≈¬ ¡æ∑˘ »Æ¿Œ - Interactable¿œ ∞ÊøÏ
-        // ¿€π∞¿ª Ω…¿ª ºˆ ¿÷¥¬ ≈∏¿œ∑Œ ∫Ø∞Ê
+        // 2. ÌÉÄÏùºÏùò ÏÉÅÌÉú Ï¢ÖÎ•ò ÌôïÏù∏ - InteractableÏùº Í≤ΩÏö∞
+        // ÏûëÎ¨ºÏùÑ Ïã¨ÏùÑ Ïàò ÏûàÎäî ÌÉÄÏùºÎ°ú Î≥ÄÍ≤Ω -> 
+        // ÌòÑÏû¨ ÎèÑÍµ¨Í∞Ä Í¥≠Ïù¥ Ïùº Í≤ΩÏö∞ Ï∂îÍ∞ÄÌïòÍ∏∞
         if (tileName.name == TileName.Interactable.ToString())
         {
             Vector2 charactorPosition = transform.position;
             Vector2 cameraPosition = Camera.main.ScreenToWorldPoint(mouseCurrentPosition);
-            bool selctable = Vector2.Distance(charactorPosition, cameraPosition) < maxDistance; // ∞≈∏Æ »Æ¿Œ
-
-            // Plowed ≈∏¿œ ∫Ø∞Ê (Summer_Plowed)
-            if (selctable) 
-            {
-                GameManager.instance.tileManager.SetInteracted(gridPosition); 
-            }
+            GameManager.instance.tileManager.selctable = Vector2.Distance(charactorPosition, cameraPosition) < maxDistance; // Í±∞Î¶¨ ÌôïÏù∏
         }
 
-        // 2. ≈∏¿œ¿« ªÛ≈¬ ¡æ∑˘ »Æ¿Œ - Summer_Plowed¿œ ∞ÊøÏ
-        // ¿€π∞¿ª Ω…¿ª ºˆ ¿÷¥¬ ≈∏¿œ∑Œ ∫Ø∞Ê
+        // 2. ÌÉÄÏùºÏùò ÏÉÅÌÉú Ï¢ÖÎ•ò ÌôïÏù∏ - Summer_PlowedÏùº Í≤ΩÏö∞
+        // ÏûëÎ¨ºÏùÑ Ïã¨ÏùÑ Ïàò ÏûàÎäî ÌÉÄÏùºÎ°ú Î≥ÄÍ≤Ω
         else if (tileName.name == TileName.Summer_Plowed.ToString())
         {
             TileBase tilename = GameManager.instance.tileManager.TileInfo(gridPosition, TileName.Summer_Plowed);
-            //Debug.Log($"≈∏¿œ ¿Ã∏ß : {tilename}");
 
-            // ¿”Ω√
-            // 1. ¿€π∞¿Ã Ω…æÓ¡Æ ¿÷¡ˆ æ ¿∫ ∞ÊøÏ
+            // ÏûÑÏãú
+            // 1. ÏûëÎ¨ºÏù¥ Ïã¨Ïñ¥Ï†∏ ÏûàÏßÄ ÏïäÏùÄ Í≤ΩÏö∞
             if(tilename == null)
             {
                 //GameManager.instance.tileManager.SetInteracted(gridPosition);
                 cropsManager.SeedCrop(gridPosition, Cropseed.corn);
             }
             
-            // 2. ¿€π∞¿Ã Ω…æÓ¡Æ ¿÷¥¬ ∞ÊøÏ
+            // 2. ÏûëÎ¨ºÏù¥ Ïã¨Ïñ¥Ï†∏ ÏûàÎäî Í≤ΩÏö∞
             else
             {
-                // 1. ªÛ≈¬ »Æ¿Œ
+                // 1. ÏÉÅÌÉú ÌôïÏù∏
 
-                // 2. ¥Ÿ ¿⁄∂Û¡ˆ æ æ“¿ª ∞ÊøÏ
+                // 2. Îã§ ÏûêÎùºÏßÄ ÏïäÏïòÏùÑ Í≤ΩÏö∞
                 cropsManager.Water(gridPosition);
                 tilename = GameManager.instance.tileManager.TileInfo(gridPosition, TileName.Summer_Plowed);
 
-                // 3. ≥Û¿€π∞¿Ã ∏µŒ º∫¿Â «ﬂ¿ª ∞ÊøÏ
+                // 3. ÎÜçÏûëÎ¨ºÏù¥ Î™®Îëê ÏÑ±Ïû• ÌñàÏùÑ Í≤ΩÏö∞
             }
 
         }
     }
-
 }

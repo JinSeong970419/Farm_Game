@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UOP1.StateMachine
+namespace FarmGame.StateMachine
 {
 	public class StateMachine : MonoBehaviour
 	{

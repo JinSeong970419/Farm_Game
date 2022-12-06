@@ -7,8 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public TileManager tileManager;
-
-    public Player player;
+    public Toolbar_UI UI_Manager;
 
     private void Awake()
     {
@@ -24,7 +23,5 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         tileManager = GetComponent<TileManager>();
-
-        player = FindObjectOfType<Player>();
     }
 }

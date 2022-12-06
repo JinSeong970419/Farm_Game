@@ -3479,7 +3479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &375362104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18915,7 +18915,6 @@ GameObject:
   - component: {fileID: 1445118604}
   - component: {fileID: 1445118603}
   - component: {fileID: 1445118607}
-  - component: {fileID: 1445118608}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -18930,7 +18929,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1445118602}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de42e5fc6c7524a4d9597d270cae65da, type: 3}
   m_Name: 
@@ -19015,7 +19014,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1445118602}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 118808cbdc714b24cbca390e75432d66, type: 3}
   m_Name: 
@@ -19027,19 +19026,6 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
   testInventory: {fileID: 0}
---- !u!114 &1445118608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1445118602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46bfe0513340e1b489e501f6975df48d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _initialState: {fileID: 11400000, guid: 3673cf17272a2f74cbb94466098892ee, type: 2}
 --- !u!1 &1582435346
 GameObject:
   m_ObjectHideFlags: 0

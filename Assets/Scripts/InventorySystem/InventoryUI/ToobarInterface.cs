@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,7 +13,7 @@ public class ToobarInterface : UIInventoryPage
         }
     }
 
-    // ÃÊ±â ¾ÆÀÌÄÜ ¾÷µ¥ÀÌÆ®
+    // ì´ˆê¸° ì•„ì´ì½˜ ì—…ë°ì´íŠ¸
     private void Start()
     {
         for (int i = 0; i < inventory.GetSlots.Length; i++)
@@ -24,7 +22,7 @@ public class ToobarInterface : UIInventoryPage
         }
     }
 
-    // Inventory UI ¾÷µ¥ÀÌÆ®
+    // Inventory UI ì—…ë°ì´íŠ¸
     private void OnslotUpdate(InventorySlot _slot)
     {
         if (_slot.item.Id <= -1)
@@ -42,12 +40,12 @@ public class ToobarInterface : UIInventoryPage
         }
     }
 
-    // ÀÎº¥Åä¸® ½½·Ô »ı¼º
+    // ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ ìƒì„±
     public override void InitializeInventoryUI(int inventorysize)
     {
         for (int i = 0; i < inventorysize; i++)
         {
-            // ½½·Ô »ı¼º ¹× 
+            // ìŠ¬ë¡¯ ìƒì„± ë° 
             UIInventoryItem uiItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity);
             uiItem.transform.SetParent(contentPanel);
             uiItem.gameObject.name = itemPrefab.name + i.ToString();
@@ -56,7 +54,7 @@ public class ToobarInterface : UIInventoryPage
             inventory.GetSlots[i].slotDisplay = uiItem;
             slotsOnInterface.Add(uiItem, inventory.GetSlots[i]);
 
-            // ÇÚµé·¯ ¿¬°á
+            // í•¸ë“¤ëŸ¬ ì—°ê²°
             uiItem.OnItemClicked += HandleItemSelection;
             uiItem.OnItemDrag += HandleDrag;
             uiItem.OnItemBeginDrag += HandleBeginDrag;

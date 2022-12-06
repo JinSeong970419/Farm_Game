@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f671f15d100f34480ad17b0c0323cf, type: 3}
+  m_Name: Plat
+  m_EditorClassIdentifier: 
+  _actions:
+  - {fileID: 11400000, guid: a015e0c602c1d58428dde8693a5b9e66, type: 2}
+  - {fileID: 11400000, guid: 0b38bba81dcbdce478d3196f6fe22b38, type: 2}
+  - {fileID: 11400000, guid: 14af3e7b5c604d04eadb73511f76e73e, type: 2}

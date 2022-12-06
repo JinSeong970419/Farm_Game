@@ -1,32 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Tilemaps;
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
+//using UnityEngine.Tilemaps;
 
-[CreateAssetMenu(menuName = "Data/CropData")]
-public class CropData : ScriptableObject
-{
-    public List<TileBase> tiles;
+//[CreateAssetMenu(menuName = "Data/CropData")]
+//public class CropData : ScriptableObject
+//{
+//    public List<TileBase> tiles;
 
-    public bool noPlant; // ½Ä¹°
+//    public bool noPlant; // ì‹ë¬¼
 
-    /*public bool withCorn;
+//    public bool planted; // ì‹¬ì€ ì‘ë¬¼
 
-    public bool withParsley;
+//    public bool collectible; // ìˆ˜ì§‘
 
-    public bool withPotato;
-
-    public bool withStrawberry;
-
-    public bool withTomato;*/
-
-    public bool planted; // ½ÉÀº ÀÛ¹°
-
-    public bool collectible; // ¼öÁı
-
-    public bool collectibleCorn;       // ¿Á¼ö¼ö
-    public bool collectibleParsley;    // ÆÄ½½¸®
-    public bool collectiblePotato;     // °¨ÀÚ
-    public bool collectibleStrawberry; // µş±â
-    public bool collectibleTomato;     // Åä¸¶Åä
-}
+//    public bool collectibleCorn;       // ì˜¥ìˆ˜ìˆ˜
+//    public bool collectibleParsley;    // íŒŒìŠ¬ë¦¬
+//    public bool collectiblePotato;     // ê°ì
+//    public bool collectibleStrawberry; // ë”¸ê¸°
+//    public bool collectibleTomato;     // í† ë§ˆí† 
+//}
