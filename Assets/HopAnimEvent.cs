@@ -15,4 +15,10 @@ public class HopAnimEvent : MonoBehaviour
         GameManager.instance.tileManager.selctable = false;
         player.AnimTime = false;
     }
+
+    public void WaterExitEvent()
+    {
+        GameManager.instance.tileManager.waterble = false;
+        player.AnimTime = false;
+    }
 }

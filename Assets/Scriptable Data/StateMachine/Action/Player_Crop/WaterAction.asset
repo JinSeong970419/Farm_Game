@@ -9,13 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca060bd41fd53ea4d9df2e6f284d481d, type: 3}
-  m_Name: HopExit
+  m_Script: {fileID: 11500000, guid: ecee129792927114faff3d2c485a765c, type: 3}
+  m_Name: WaterAction
   m_EditorClassIdentifier: 
-  description: "\uAD2D\uC774\uC9C8 \uC560\uB2C8\uBA54\uC774\uC158"
-  parameterType: 0
-  parmetName: isHop
-  boolValue: 0
-  intValue: 0
-  floatValue: 0
-  moment: 1
+  description: "Player \uC120\uD0DD\uD55C \uB18D\uC791\uBB3C\uC5D0 \uBB3C \uC8FC\uAE30(\uBB3C
+    \uC8FC\uAE30)"
+  _moment: 1

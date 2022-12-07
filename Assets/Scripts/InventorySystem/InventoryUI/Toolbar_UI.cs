@@ -33,5 +33,6 @@ public class Toolbar_UI : MonoBehaviour
         Slots[currentNum].borderImage.enabled = false;
         Slots[newNumber - 1].borderImage.enabled = true;
         currentNum = newNumber - 1;
+        MouseData.selectBar = Slots[currentNum];
     }
 }

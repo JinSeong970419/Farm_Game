@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca060bd41fd53ea4d9df2e6f284d481d, type: 3}
-  m_Name: HopEnter
+  m_Name: AniHopExit
   m_EditorClassIdentifier: 
   description: "\uAD2D\uC774\uC9C8 \uC560\uB2C8\uBA54\uC774\uC158"
   parameterType: 0
   parmetName: isHop
-  boolValue: 1
+  boolValue: 0
   intValue: 0
   floatValue: 0
-  moment: 0
+  moment: 1

@@ -11,8 +11,8 @@ public class Movement : MonoBehaviour
     [HideInInspector] public Vector3 direction;
     [HideInInspector] public Vector3 movementVector;
 
-    [SerializeField] private InventoryInterface inventoryUI;
-    [SerializeField] private ToobarInterface ToolbarUI;
+    [SerializeField] public InventoryInterface inventoryUI;
+    [SerializeField] public ToobarInterface ToolbarUI;
 
     public int inventorySize;
     public int toolbarSize;
@@ -62,6 +62,16 @@ public class Movement : MonoBehaviour
         else
         {
             inventoryUI.Hide();
+        }
+    }
+    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        BaesItem item = collision.GetComponent<BaesItem>();
+        if (item != null)
+        {
+            Destroy(collision.gameObject);
+            inventoryUI.inventory.AddItem(new Item(item.item), 1);
         }
     }
 }

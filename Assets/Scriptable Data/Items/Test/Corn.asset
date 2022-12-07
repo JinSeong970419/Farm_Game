@@ -19,6 +19,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b5f2f8057a7550240826176e03da6c93, type: 2}
   - {fileID: 11400000, guid: 87bf2cf2679b1244bb533173925796bb, type: 2}
   - {fileID: 11400000, guid: 8d05de0c748635f49b757d350c3cd65b, type: 2}
+  itemData: {fileID: 11400000, guid: 1d26248e22f021a4987f23afa89dc33b, type: 2}
   stateNow: {fileID: 0}
   stateIndex: 0
   position: {x: 0, y: 0, z: 0}

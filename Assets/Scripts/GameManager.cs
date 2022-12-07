@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public TileManager tileManager;
     public Toolbar_UI UI_Manager;
+    public CropsManager cropManager;
 
     private void Awake()
     {
@@ -23,5 +24,6 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         tileManager = GetComponent<TileManager>();
+        cropManager = GetComponent<CropsManager>();
     }
 }

@@ -13,7 +13,8 @@ public class TileManager : MonoBehaviour
     [SerializeField] private Tile interactedTile;
 
     [HideInInspector] public bool pissible = true; // 인벤토리 작동 여부 확인
-    [HideInInspector] public bool selctable; //괭이 질 상태머신 이벤트
+    [HideInInspector] public bool selctable; // 괭이 질 상태머신 이벤트
+    [HideInInspector] public bool waterble; // Water 이벤트
     private TileBase tile;
 
     void Start()
@@ -80,5 +81,10 @@ public class TileManager : MonoBehaviour
     public void SetInteracted(Vector3Int position, Tile tile)
     {
         interactableMap.SetTile(position, tile);
+    }
+
+    public void SetCropsTile(Vector3Int position, Tile tile)
+    {
+        cropsTileMap.SetTile(position, tile);
     }
 }

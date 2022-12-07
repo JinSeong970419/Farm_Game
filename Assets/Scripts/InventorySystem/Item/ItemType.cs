@@ -1,5 +1,7 @@
 public enum ItemType
 {
     Food,
-    Seed
+    Seed,
+    Hop,
+    water
 }

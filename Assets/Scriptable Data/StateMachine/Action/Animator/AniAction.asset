@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92f671f15d100f34480ad17b0c0323cf, type: 3}
-  m_Name: Idle
+  m_Script: {fileID: 11500000, guid: 31bd468a1b5dd4047a8cf6dc83687a01, type: 3}
+  m_Name: AniAction
   m_EditorClassIdentifier: 
-  _actions:
-  - {fileID: 11400000, guid: f599fa76a36057b47a9361b09d71c202, type: 2}
-  - {fileID: 11400000, guid: e058c5c21bcea6c4c96bc5802b675552, type: 2}
+  description: "\uC560\uB2C8\uBA54\uC774\uC158 \uC2DC\uC791 \uC774\uBCA4\uD2B8"

@@ -2,7 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(BoxCollider2D))]
-public class BeasItem : MonoBehaviour
+public class BaesItem : MonoBehaviour
 {
     public ItemObject item;
     private BoxCollider2D collider2d;

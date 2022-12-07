@@ -8,16 +8,17 @@ using UnityEngine.UI;
 public class Crop : ScriptableObject
 {
     public string Name;
-    // ³óÀÛ¹° ¼ºÀå ¼ø¼­
+    // ë†ì‘ë¬¼ ì„±ì¥ ìˆœì„œ
     public TileBase[] state = new TileBase[5];
 
-    //public Tilemap cropTilemap;
+    // ë†ì‘ë¬¼ ì•„ì´í…œ ì •ë³´
+    public ItemObject itemData;
 
-    public TileBase stateNow; // ³óÀÛ¹° »óÅÂ
-    public int stateIndex; // ³óÀÛ¹° »óÅÂ
+    public TileBase stateNow; // ë†ì‘ë¬¼ ìƒíƒœ
+    public int stateIndex; // ë†ì‘ë¬¼ ìƒíƒœ
     public Vector3Int position;
 
-    public float timeRemaining = 10;  // ³óÀÛ¹° ¼ºÀå ½Ã°£
-    public bool timerIsRunning = false; // ¼ºÀå ¿©ºÎ
+    public float timeRemaining = 10;  // ë†ì‘ë¬¼ ì„±ì¥ ì‹œê°„
+    public bool timerIsRunning = false; // ì„±ì¥ ì—¬ë¶€
     public Text timeText;
 }

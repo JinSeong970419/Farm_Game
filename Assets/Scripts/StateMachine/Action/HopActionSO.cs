@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using FarmGame.StateMachine;
 using FarmGame.StateMachine.ScriptableObjects;
@@ -16,21 +14,16 @@ public class HopActionSO : StateActionSO
 public class HopAction : StateAction
 {
 	private TileController _TileCtroller;
-	private Movement _movement;
 	public override void Awake(StateMachine stateMachine)
     {
 		_TileCtroller = stateMachine.GetComponent<TileController>();
-		_movement = stateMachine.GetComponent<Movement>();
 	}
 
-	public override void OnStateEnter()
-	{
-	}
+	public override void OnStateEnter() { }
 	public override void OnUpdate()	{ }
 
 	public override void OnStateExit() 
 	{
 		GameManager.instance.tileManager.SetInteracted(_TileCtroller.gridPosition);
-		_movement.AnimTime = false;
 	}
 }

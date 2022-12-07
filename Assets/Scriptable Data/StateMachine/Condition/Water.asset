@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09915dc8686125945acc4c4c2917fbb7, type: 3}
-  m_Name: Item Databas
+  m_Script: {fileID: 11500000, guid: e920cf85b32dcfc4c94a67b638e27a81, type: 3}
+  m_Name: Water
   m_EditorClassIdentifier: 
-  ItemObject:
-  - {fileID: 11400000, guid: 1d26248e22f021a4987f23afa89dc33b, type: 2}
-  - {fileID: 11400000, guid: 0eb1dfad243c5f14987b7940bcda3c04, type: 2}

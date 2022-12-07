@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using FarmGame.StateMachine;
 using FarmGame.StateMachine.ScriptableObjects;
 
-[CreateAssetMenu(fileName = "HopAction", menuName = "State Machines/Actions/HopActionEnter")]
-public class HopActionEnterSO : StateActionSO
+[CreateAssetMenu(fileName = "AniAction", menuName = "State Machines/Actions/AniEnter")]
+public class AniActionEnterSO : StateActionSO
 {
-    protected override StateAction CreateAction() => new HopActionEnter();
+    protected override StateAction CreateAction() => new AniActionEnter();
 }
 
-public class HopActionEnter : StateAction
+public class AniActionEnter : StateAction
 {
     Movement _movement;
     public override void Awake(StateMachine stateMachine)

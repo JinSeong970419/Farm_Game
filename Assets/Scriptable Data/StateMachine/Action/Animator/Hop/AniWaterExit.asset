@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92f671f15d100f34480ad17b0c0323cf, type: 3}
-  m_Name: Idle
+  m_Script: {fileID: 11500000, guid: ca060bd41fd53ea4d9df2e6f284d481d, type: 3}
+  m_Name: AniWaterExit
   m_EditorClassIdentifier: 
-  _actions:
-  - {fileID: 11400000, guid: f599fa76a36057b47a9361b09d71c202, type: 2}
-  - {fileID: 11400000, guid: e058c5c21bcea6c4c96bc5802b675552, type: 2}
+  description: "\uBB3C \uC560\uB2C8\uBA54\uC774\uC158"
+  parameterType: 0
+  parmetName: isWater
+  boolValue: 0
+  intValue: 0
+  floatValue: 0
+  moment: 1
