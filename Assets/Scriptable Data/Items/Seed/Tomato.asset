@@ -15,9 +15,10 @@ MonoBehaviour:
   ObjName: tomato
   uiDisplay: {fileID: 161819189, guid: 4c545626ea95f914d9ab5979fdbe0e00, type: 3}
   characterDisplay: {fileID: 0}
+  CropData: {fileID: 11400000, guid: 01583242797b11c49ae97afc16640529, type: 2}
   stackable: 1
   type: 1
   description: Tomato very very Good
   data:
     Name: 
-    Id: -1
+    Id: 1

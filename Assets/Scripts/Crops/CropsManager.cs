@@ -10,11 +10,6 @@ public class CropsManager : MonoBehaviour
 
     // 농작물 정보
     public Dictionary<Vector3Int, Crop> crops;
-    public Crop corn;
-
-    // 타일 정보
-    [SerializeField] public Tile wetground;
-    [SerializeField] public Tile dryground;
 
     private void Start()
     {
@@ -22,29 +17,24 @@ public class CropsManager : MonoBehaviour
     }
 
     // 작물 심기
-    public void SeedCrop(Vector3Int position, Cropseed name)
+    public void SeedCrop(Vector3Int position, Crop crop)
     {
         Crop cropSeeded;
-        // Test 당근
-        if (name == Cropseed.corn)
-        {
-            cropSeeded = Instantiate(corn); //옥수수를 복제하다
-            cropSeeded.position = position; //위치 설정
-            cropSeeded.stateNow = cropSeeded.state[0]; // 상태 초기화
-            cropSeeded.stateIndex = 0; // 상태 초기화
-            cropSeeded.timeRemaining = 2; //성장시간 할당 - 추후 변경
+        cropSeeded = Instantiate(crop); // 씨앗 정보를 복제
+        cropSeeded.position = position; // 위치 설정
+        cropSeeded.stateNow = cropSeeded.state[0]; // 상태 초기화
+        cropSeeded.stateIndex = 0; // 상태 초기화
             
-            // 작물 위치 및 정보 추가
-            crops.Add(position, cropSeeded);
-            cropTilemap.SetTile(cropSeeded.position, cropSeeded.stateNow); // 타일을 농작물로 변경
-        }
+        // 작물 위치 및 정보 추가
+        crops.Add(position, cropSeeded);
+        cropTilemap.SetTile(cropSeeded.position, cropSeeded.stateNow); // 타일을 농작물로 변경
     }
 
     // 작물 물주기
     public void Water(Vector3Int position)
     {
         crops[position].timerIsRunning = true; // 식물을 자라게 쓸모없는 작업
-        GameManager.instance.tileManager.SetInteracted(position, wetground); // 타일을 젖은 지면으로 바꾸기
+        GameManager.instance.tileManager.SetInteracted(position, TileName.Wetground); // 타일을 젖은 지면으로 바꾸기
         StartCoroutine(WaitForIt(crops[position]));
     }
 
@@ -56,7 +46,7 @@ public class CropsManager : MonoBehaviour
         // 농작물 성장 종료
         crop.timerIsRunning = false;
         crop.timeRemaining = 2;
-        GameManager.instance.tileManager.SetInteracted(crop.position, dryground);
+        GameManager.instance.tileManager.SetInteracted(crop.position, TileName.Summer_Plowed);
 
         crop.stateIndex = (crop.stateIndex + 1) % crop.state.Length;
         crop.stateNow = crop.state[crop.stateIndex];
@@ -73,6 +63,7 @@ public class CropsManager : MonoBehaviour
         //}
     }
 
+    // 작물 수확
     public void Harvest(Vector3Int position)
     {
         // 아이템 인벤토리 추가 넣기
@@ -80,7 +71,7 @@ public class CropsManager : MonoBehaviour
         obj.AddComponent<BaesItem>();
         BaesItem test = obj.GetComponent<BaesItem>();
         test.item = crops[position].itemData;
-
+        //crops[position].itemData.CreateItem();
 
         GameManager.instance.tileManager.SetCropsTile(crops[position].position, null);
         crops.Remove(position);

@@ -3,33 +3,21 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
-public enum TileName
-{
-    Interactable,
-    Summer_Plowed,
-    Wetground,
-    Dryground
-}
-
-public enum Cropseed
-{
-    corn
-}
-
 public class TileController : MonoBehaviour
 {
-    [SerializeField] CropsManager cropsManager;
+    [SerializeField] private CropsManager cropsManager;
     private Movement _movement;
     private ItemObject itemObject;
     private TileBase tileName;
     private Crop crops;
 
-    public static UnityAction<Vector2> ClickEvent; // 마우스 이벤트
-
-    public Vector2 mouseCurrentPosition;
+    private Vector2 mouseCurrentPosition;
     public Vector3Int gridPosition;
 
+    // 툴 상호작용 거리
     [SerializeField] float maxDistance = 2f;
+
+    public static UnityAction<Vector2> ClickEvent; // 마우스 이벤트
 
     private void Awake()
     {
@@ -46,14 +34,16 @@ public class TileController : MonoBehaviour
         mouseCurrentPosition = Mouse.current.position.ReadValue();
         gridPosition = GameManager.instance.tileManager.GetGridPosition(mouseCurrentPosition, true);
         tileName = GameManager.instance.tileManager.TileInfo(gridPosition, TileName.Interactable);
+
         // 1-2. 선택된 도구 확인
         itemObject = _movement.ToolbarUI.slotsOnInterface[MouseData.selectBar].GetItemObject();
+        if (itemObject == null) return; // 선택이 안됐을 경우 리턴
 
-        // 2. 타일의 상태 종류 확인 - Interactable 및 현재 선택한 도구가 Hop일 경우
+        // 2. 타일의 상태 종류 확인
         // 작물을 심을 수 있는 타일로 변경
         if (tileName.name == TileName.Interactable.ToString())
         {
-            if(itemObject != null && itemObject.type == ItemType.Hop)
+            if(itemObject.type == ItemType.Hop)
             {
                 Vector2 charactorPosition = transform.position;
                 Vector2 cameraPosition = Camera.main.ScreenToWorldPoint(mouseCurrentPosition);
@@ -72,7 +62,8 @@ public class TileController : MonoBehaviour
             // 선택된 씨앗 심기 기능 - cropManager와 연계
             if(tileName == null)
             {
-                cropsManager.SeedCrop(gridPosition, Cropseed.corn);
+                if (itemObject.type == ItemType.Seed)
+                    cropsManager.SeedCrop(gridPosition, itemObject.CropData);
             }
             
             // 2. 작물이 심어져 있는 경우
@@ -83,18 +74,12 @@ public class TileController : MonoBehaviour
                 if (crops.stateIndex < crops.state.Length - 1)
                 {
                     // 물주기
-                    if (itemObject != null && itemObject.type == ItemType.water)
-                    {
+                    if (itemObject.type == ItemType.water)
                         GameManager.instance.tileManager.waterble = true;
-                    }
                 }
                 // 2-2. 농작물이 모두 성장 했을 경우
-                else
-                {
-                    GameManager.instance.cropManager.Harvest(crops.position);
-                }
+                else { cropsManager.Harvest(crops.position); }
             }
-
         }
     }
 }

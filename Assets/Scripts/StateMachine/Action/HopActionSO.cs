@@ -24,6 +24,6 @@ public class HopAction : StateAction
 
 	public override void OnStateExit() 
 	{
-		GameManager.instance.tileManager.SetInteracted(_TileCtroller.gridPosition);
+		GameManager.instance.tileManager.SetInteracted(_TileCtroller.gridPosition, TileName.Summer_Plowed);
 	}
 }

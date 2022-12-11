@@ -15,6 +15,7 @@ MonoBehaviour:
   ObjName: Carrot
   uiDisplay: {fileID: 2116266821, guid: 4c545626ea95f914d9ab5979fdbe0e00, type: 3}
   characterDisplay: {fileID: 0}
+  CropData: {fileID: 11400000, guid: aa3425aab3ffc4548b1ebe1176c9522a, type: 2}
   stackable: 1
   type: 1
   description: Carrot yami

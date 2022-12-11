@@ -9,8 +9,11 @@ public class TileManager : MonoBehaviour
     [SerializeField] private Tilemap cropsTileMap;
 
     [SerializeField] List<TileData> tileDatas; // 타일 정보 변수
-    [SerializeField] private Tile hiddenInteractableTile;
-    [SerializeField] private Tile interactedTile;
+    private Tile SelectTile;  // 반환 용 타일 변수
+
+    [SerializeField] private Tile hiddenInteractableTile; // 사용가능 타일
+    [SerializeField] private Tile interactedTile;  // 마른 땅
+    [SerializeField] private Tile wetground;       // 젖은 땅
 
     [HideInInspector] public bool pissible = true; // 인벤토리 작동 여부 확인
     [HideInInspector] public bool selctable; // 괭이 질 상태머신 이벤트
@@ -59,32 +62,44 @@ public class TileManager : MonoBehaviour
     }
 
     // 사용 가능 땅 여부 확인
-    public bool IsInteractable(Vector3Int position)
-    {
-        TileBase tile = interactableMap.GetTile(position);
-        if(tile != null)
-        {
-            if(tile.name == "Interactable")
-            {
-                return true;
-            }
-        }
-        return false;
-    }
+    //public bool IsInteractable(Vector3Int position)
+    //{
+    //    TileBase tile = interactableMap.GetTile(position);
+    //    if(tile != null)
+    //    {
+    //        if(tile.name == "Interactable")
+    //        {
+    //            return true;
+    //        }
+    //    }
+    //    return false;
+    //}
 
     // 괭이 완료 지역 표시
-    public void SetInteracted(Vector3Int position)
+    public void SetInteracted(Vector3Int position, TileName tile)
     {
-        interactableMap.SetTile(position, interactedTile);
+
+        interactableMap.SetTile(position, TileSelect(tile));
     }
 
-    public void SetInteracted(Vector3Int position, Tile tile)
-    {
-        interactableMap.SetTile(position, tile);
-    }
-
+    // 열매 타일 초기화 
     public void SetCropsTile(Vector3Int position, Tile tile)
     {
         cropsTileMap.SetTile(position, tile);
+    }
+
+    private Tile TileSelect(TileName tile)
+    {
+        switch (tile)
+        {
+            case TileName.Summer_Plowed:
+                SelectTile = interactedTile;
+                break;
+            case TileName.Wetground:
+                SelectTile = wetground;
+                break;
+        }
+
+        return SelectTile;
     }
 }

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fb3769d1327c234a8927da705cc0d43, type: 3}
-  m_Name: Corn
+  m_Name: CarrotSeed
   m_EditorClassIdentifier: 
-  Name: corn
+  Name: Carrot
   state:
   - {fileID: 11400000, guid: f6e08b97f211fb34ea3de0afa8cb7272, type: 2}
   - {fileID: 11400000, guid: 88285d158f8bed544880de0357a2017b, type: 2}
