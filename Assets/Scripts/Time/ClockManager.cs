@@ -37,5 +37,11 @@ public class ClockManager : MonoBehaviour
         float dayNightT = dayNightCurve.Evaluate(t);
 
         sunlight.intensity = Mathf.Lerp(nightInstensity, dayIntensity, dayNightT);
+
+        if (dateTime.PlayerCheck) 
+        {
+            dateTime.PlayerCheck = false;
+            GameManager.instance.Health.HP -= 1f; 
+        }
     }
 }

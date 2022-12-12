@@ -12,7 +12,7 @@ public class TileController : MonoBehaviour
     private Crop crops;
 
     private Vector2 mouseCurrentPosition;
-    public Vector3Int gridPosition;
+    [HideInInspector] public Vector3Int gridPosition;
 
     // 툴 상호작용 거리
     [SerializeField] float maxDistance = 2f;
@@ -58,8 +58,6 @@ public class TileController : MonoBehaviour
             tileName = GameManager.instance.tileManager.TileInfo(gridPosition, TileName.Summer_Plowed);
 
             // 1. 작물이 심어져 있지 않은 경우
-            // 12/08 농작물 추가
-            // 선택된 씨앗 심기 기능 - cropManager와 연계
             if(tileName == null)
             {
                 if (itemObject.type == ItemType.Seed)
@@ -70,14 +68,14 @@ public class TileController : MonoBehaviour
             else
             {
                 crops = GameManager.instance.cropManager.crops[gridPosition];
-                // 2-1. 다 자라지 않았을 경우
+                // 2-1. 작물이 자라지 않았을 경우
                 if (crops.stateIndex < crops.state.Length - 1)
                 {
                     // 물주기
                     if (itemObject.type == ItemType.water)
                         GameManager.instance.tileManager.waterble = true;
                 }
-                // 2-2. 농작물이 모두 성장 했을 경우
+                // 2-2. 작물이 모두 성장 했을 경우
                 else { cropsManager.Harvest(crops.position); }
             }
         }

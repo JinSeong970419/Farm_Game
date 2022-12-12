@@ -17,6 +17,8 @@ public class TimeManager : MonoBehaviour
     public float timeSpeed;
     private float currentTikebetweenTicks;
 
+    
+
     public static UnityAction<DateTime> OnDateTimeChanged;
 
     private void Awake()
@@ -50,7 +52,7 @@ public class TimeManager : MonoBehaviour
 }
 
 [System.Serializable]
-public struct DateTime
+public class DateTime
 {
     // Fieds
     private Days day;
@@ -75,6 +77,14 @@ public struct DateTime
     private int totalNumWeeks;
     public int TotalNumWeeks => totalNumWeeks;
     public int currentWeek => totalNumWeeks % 16 == 0 ? 16 : totalNumWeeks % 16;
+
+    private bool playerCheck;
+    public bool PlayerCheck
+    {
+        get => playerCheck;
+        set => playerCheck = value;
+    }
+
 
     // 타임 설정
     public DateTime(int season, int year, int month, int date, int hour, int minutes)
@@ -110,6 +120,7 @@ public struct DateTime
 
     private void AdvanceHour()
     {
+        playerCheck = true;
         if (hour + 1 == 24)
         {
             hour = 0;

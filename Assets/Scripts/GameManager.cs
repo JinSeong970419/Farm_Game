@@ -6,6 +6,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [SerializeField] private PlayerHealth health;
+    public PlayerHealth Health
+    {
+        get { return health; }
+    }
+
     public TileManager tileManager;
     public Toolbar_UI UI_Manager;
     public CropsManager cropManager;
@@ -25,5 +31,8 @@ public class GameManager : MonoBehaviour
 
         tileManager = GetComponent<TileManager>();
         cropManager = GetComponent<CropsManager>();
+
+        // 임시
+        health = GameObject.Find("Player").GetComponent<PlayerHealth>();
     }
 }
