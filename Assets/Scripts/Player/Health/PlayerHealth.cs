@@ -14,10 +14,6 @@ public class PlayerHealth : MonoBehaviour, IHealth
         {
             hp = Mathf.Clamp(value, 0, maxHp);
             onHealthChange?.Invoke();
-            if(hp == 0)
-            {
-                Debug.Log("사망 이벤트");
-            }
         }
     }
 

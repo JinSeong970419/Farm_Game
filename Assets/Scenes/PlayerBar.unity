@@ -17542,7 +17542,7 @@ GameObject:
   - component: {fileID: 1231949639}
   - component: {fileID: 1231949638}
   m_Layer: 5
-  m_Name: ' heart'
+  m_Name: Heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
