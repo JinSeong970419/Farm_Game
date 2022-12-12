@@ -51,6 +51,7 @@ namespace FarmGame.StateMachine
 			OnStateExit(_actions);
 		}
 
+		// player 컨테이너
 		public bool TryGetTransition(out State state)
 		{
 			state = null;

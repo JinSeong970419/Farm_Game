@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea8d45c9a9b8a684e89a535543506761, type: 3}
   m_Name: DeathAction
   m_EditorClassIdentifier: 
-  description: 
+  description: "\uC0AC\uB9DD \uC774\uBCA4\uD2B8"
+  _moment: 0

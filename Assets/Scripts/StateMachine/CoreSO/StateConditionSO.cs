@@ -5,7 +5,7 @@ namespace FarmGame.StateMachine.ScriptableObjects
 {
 	public abstract class StateConditionSO : ScriptableObject
 	{
-		// 새 사용자 지정 참조 또는 내부의 기존 사용자 지정을 사용합니다.
+		// 새 사용자 지정 참조 또는 내부의 기존 사용자 지정을 사용
 		internal StateCondition GetCondition(StateMachine stateMachine, bool expectedResult, Dictionary<ScriptableObject, object> createdInstances)
 		{
 			if (!createdInstances.TryGetValue(this, out var obj))

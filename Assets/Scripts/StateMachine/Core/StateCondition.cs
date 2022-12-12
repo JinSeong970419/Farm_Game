@@ -53,6 +53,7 @@ namespace FarmGame.StateMachine
 			bool statement = _condition.GetStatement();
 			bool isMet = statement == _expectedResult;
 
+			// 테스트 용
 #if UNITY_EDITOR
 			_stateMachine._debugger.TransitionConditionResult(_condition._originSO.name, statement, isMet);
 #endif

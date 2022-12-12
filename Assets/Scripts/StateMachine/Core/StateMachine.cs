@@ -64,6 +64,7 @@ namespace FarmGame.StateMachine
 			return true;
 		}
 
+		// 미 사용
 		public T GetOrAddComponent<T>() where T : Component
 		{
 			if (!TryGetComponent<T>(out var component))
