@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class ToobarInterface : UIInventoryPage
 {
+    private Spliter spliter;
+
     private void OnEnable()
     {
         for (int i = 0; i < inventory.GetSlots.Length; i++)
@@ -20,6 +22,7 @@ public class ToobarInterface : UIInventoryPage
         {
             inventory.GetSlots[i].onBeforeUpdated.Invoke(inventory.GetSlots[i]);
         }
+        spliter = gameObject.transform.parent.parent.GetChild(4).GetComponentInChildren<Spliter>();
     }
 
     // Inventory UI 업데이트
@@ -62,5 +65,12 @@ public class ToobarInterface : UIInventoryPage
             uiItem.OnItemDroppedOn += HandleSwap;
             uiItem.OnRightMouseBtnClick += HandleShowItemActions;
         }
+    }
+
+    // 우클릭
+    protected void HandleShowItemActions(UIInventoryItem obj)
+    {
+        if (slotsOnInterface[obj].GetItemObject()?.stackable == true)
+            spliter.Show(slotsOnInterface[obj]);
     }
 }

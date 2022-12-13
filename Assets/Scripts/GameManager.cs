@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [HideInInspector] public bool _SpliterUI; // spliterUI 실행 여부
+
     [SerializeField] private PlayerHealth health;
     public PlayerHealth Health
     {

@@ -8,40 +8,35 @@ using UnityEngine.UI;
 
 public abstract class UIInventoryPage : MonoBehaviour
 {
-    [SerializeField] protected UIInventoryItem itemPrefab; // ½½·Ô ÇÁ¸®ÆÕ
-    [SerializeField] protected RectTransform contentPanel; // ½½·Ô »ı¼º ¿ÀºêÁ§Æ®
+    [SerializeField] protected UIInventoryItem itemPrefab; // ìŠ¬ë¡¯ í”„ë¦¬íŒ¹
+    [SerializeField] protected RectTransform contentPanel; // ìŠ¬ë¡¯ ìƒì„± ì˜¤ë¸Œì íŠ¸
 
-    [SerializeField] public InventoryObject inventory; // ÀÎº¥Åä¸® µ¥ÀÌÅÍ
+    [SerializeField] public InventoryObject inventory; // ì¸ë²¤í† ë¦¬ ë°ì´í„°
 
     public Dictionary<UIInventoryItem, InventorySlot> slotsOnInterface = new Dictionary<UIInventoryItem, InventorySlot>();
 
-    // ÀÎº¥Åä¸® ½½·Ô »ı¼º
+    // ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ ìƒì„±
     public abstract void InitializeInventoryUI(int inventorySize);
 
-    // ÁÂÅ¬¸¯
+    // ì¢Œí´ë¦­
     protected void HandleItemSelection(UIInventoryItem obj)
     {
-        // ¾ÆÀÌÅÛ ¼³¸í Ã¢
+        // ì•„ì´í…œ ì„¤ëª… ì°½
         if(slotsOnInterface[obj].item.Id > -1)
         {
-            Debug.Log("¼³¸íÁß~");
+            Debug.Log("ì„¤ëª…ì¤‘~");
             //itemDescription.SetDescription(slotsOnInterface[obj].GetItemObject());
         }
     }
 
-    // ¿ìÅ¬¸¯
-    protected void HandleShowItemActions(UIInventoryItem obj)
-    {
-    }
-
     // Drag
-    // 1. ½ÃÀÛ
+    // 1. ì‹œì‘
     protected void HandleBeginDrag(UIInventoryItem obj)
     {
-        MouseData.slotHoveredOver = slotsOnInterface[obj];   // ½ÃÀÛ ½½·Ô Á¤º¸
-        MouseData.tempItemBeingDragged = CreateTempItem(obj); // drag ÀÌ¹ÌÁö »ı¼º
+        MouseData.slotHoveredOver = slotsOnInterface[obj];   // ì‹œì‘ ìŠ¬ë¡¯ ì •ë³´
+        MouseData.tempItemBeingDragged = CreateTempItem(obj); // drag ì´ë¯¸ì§€ ìƒì„±
     }
-    // 2. ÁøÇà
+    // 2. ì§„í–‰
     protected void HandleDrag(UIInventoryItem obj)
     {
         if (MouseData.tempItemBeingDragged != null)
@@ -50,16 +45,16 @@ public abstract class UIInventoryPage : MonoBehaviour
         }
     }
 
-    // 3. Á¾·á
+    // 3. ì¢…ë£Œ
     protected void HandleEndDrag(UIInventoryItem obj)
     {
         Destroy(MouseData.tempItemBeingDragged);
-        // ¾ÆÀÌÅÛ »èÁ¦
+        // ì•„ì´í…œ ì‚­ì œ
         if (!EventSystem.current.IsPointerOverGameObject())
         {
             slotsOnInterface[obj].RemoveItem();
         }
-        // ¾ÆÀÌÅÛ À§Ä¡ º¯°æ
+        // ì•„ì´í…œ ìœ„ì¹˜ ë³€ê²½
         else if (MouseData.interfaceMouseIsOver != null)
         {
             inventory.SwapItems(MouseData.slotHoveredOver, MouseData.interfaceMouseIsOver);
@@ -69,10 +64,10 @@ public abstract class UIInventoryPage : MonoBehaviour
 
     protected void HandleSwap(UIInventoryItem obj)
     {
-        MouseData.interfaceMouseIsOver = slotsOnInterface[obj]; // µµÂø ½½·Ô Á¤º¸
+        MouseData.interfaceMouseIsOver = slotsOnInterface[obj]; // ë„ì°© ìŠ¬ë¡¯ ì •ë³´
     }
 
-    // ¾ÆÀÌÅÛ µå·¹±× Áß ¾ÆÀÌÄÜ »ı¼º
+    // ì•„ì´í…œ ë“œë ˆê·¸ ì¤‘ ì•„ì´ì½˜ ìƒì„±
     protected GameObject CreateTempItem(UIInventoryItem obj)
     {
         GameObject temItem = null;

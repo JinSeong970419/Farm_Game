@@ -68,8 +68,15 @@ public class InventoryObject : ScriptableObject
     // 아이템 위치 변경
     public void SwapItems(InventorySlot item1, InventorySlot item2)
     {
+        // 바꾸고자 하는 아이템이 겹칠 수 있고 같다면
+        if(item1.item.Id == item2.item.Id && item1.GetItemObject().stackable)
+        {
+            item2.UpdateSlot(item1.item, item1.amount + item2.amount);
+            item1.RemoveItem();
+        }
+
         // 바꾸고자 하는 아이템 정보가 위치를 변경할 수 있는지 확인 후 변경
-        if (item2.CanPlaceInSlot(item1.GetItemObject()) && item1.CanPlaceInSlot(item2.GetItemObject()))
+        else if (item2.CanPlaceInSlot(item1.GetItemObject()) && item1.CanPlaceInSlot(item2.GetItemObject()))
         {
             InventorySlot temp = new InventorySlot(item2.item, item2.amount);
             item2.UpdateSlot(item1.item, item1.amount);

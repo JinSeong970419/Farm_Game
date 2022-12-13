@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class InventoryInterface : UIInventoryPage
 {
     [SerializeField] private UIInventoryDescription itemDescription;
+    private Spliter spliter;
 
     private void OnEnable()
     {
@@ -26,6 +27,7 @@ public class InventoryInterface : UIInventoryPage
         {
             inventory.GetSlots[i].onAfterUpdated.Invoke(inventory.GetSlots[i]);
         }
+        spliter = gameObject.transform.parent.parent.GetChild(4).GetComponentInChildren<Spliter>();
     }
 
     // Inventory UI 업데이트
@@ -78,8 +80,16 @@ public class InventoryInterface : UIInventoryPage
 
     public void Hide()
     {
+        if (GameManager.instance._SpliterUI) return;
         gameObject.SetActive(false);
         GameManager.instance.tileManager.pissible = false;
     }
     #endregion 
+
+    // 우클릭
+    protected void HandleShowItemActions(UIInventoryItem obj)
+    {
+        if (slotsOnInterface[obj].GetItemObject()?.stackable == true)
+            spliter.Show(slotsOnInterface[obj]);
+    }
 }

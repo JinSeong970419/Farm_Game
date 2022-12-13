@@ -30,9 +30,12 @@ public class Toolbar_UI : MonoBehaviour
     // 선택된 슬롯창 표시
     public void SelectSlot(int newNumber = 1)
     {
-        Slots[currentNum].borderImage.enabled = false;
-        Slots[newNumber - 1].borderImage.enabled = true;
-        currentNum = newNumber - 1;
-        MouseData.selectBar = Slots[currentNum];
+        if (!GameManager.instance._SpliterUI)
+        {
+            Slots[currentNum].borderImage.enabled = false;
+            Slots[newNumber - 1].borderImage.enabled = true;
+            currentNum = newNumber - 1;
+            MouseData.selectBar = Slots[currentNum];
+        }
     }
 }

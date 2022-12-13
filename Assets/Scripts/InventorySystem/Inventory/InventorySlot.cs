@@ -16,38 +16,38 @@ public class InventorySlot
     public Item item;
     public int amount;
 
-    // µ¥ÀÌÅÍº£ÀÌ½º¿¡¼­ Á¤º¸ ¾ÆÀÌÅÛ °¡Á®¿À±â
+    // ë°ì´í„°ë² ì´ìŠ¤ì—ì„œ ì •ë³´ ì•„ì´í…œ ê°€ì ¸ì˜¤ê¸°
     public ItemObject GetItemObject() { return item.Id >= 0 ? parent.inventory.database.ItemObject[item.Id] : null; }
 
-    // ¾ÆÀÌÅÛ ÃÊ±âÈ­
+    // ì•„ì´í…œ ì´ˆê¸°í™”
     public InventorySlot() => UpdateSlot(new Item(), 0);
 
     public InventorySlot(Item _item, int _amount) => UpdateSlot(_item, _amount);
 
-    // ¾ÆÀÌÅÛ »èÁ¦
+    // ì•„ì´í…œ ì‚­ì œ
     public void RemoveItem() => UpdateSlot(new Item(), 0);
 
-    // Stackable ¼Ó¼º ¾ÆÀÌÅÛ °³¼ö º¯°æ
+    // Stackable ì†ì„± ì•„ì´í…œ ê°œìˆ˜ ë³€ê²½
     public void AddAmount(int value) => UpdateSlot(item, amount += value);
 
-    // ¾ÆÀÌÅÛ½½·Ô ÃÖ½ÅÈ­
+    // ì•„ì´í…œìŠ¬ë¡¯ ìµœì‹ í™”
     public void UpdateSlot(Item itemValue, int amountValue)
     {
-        // ÀåºñÃ¢ ¹× ÀÎº¥Åä¸®Ã¢ ¾ÆÀÌÅÛ ÀüºÎ »èÁ¦ ÈÄ ºÒ·¯¿À±â
+        // ì¥ë¹„ì°½ ë° ì¸ë²¤í† ë¦¬ì°½ ì•„ì´í…œ ì „ë¶€ ì‚­ì œ í›„ ë¶ˆëŸ¬ì˜¤ê¸°
         item = itemValue;
         amount = amountValue;
         onAfterUpdated?.Invoke(this);
         onBeforeUpdated?.Invoke(this);
     }
 
-    // ±³È¯ÀÌ °¡´ÉÇÑÁö ¿©ºÎ È®ÀÎ
+    // êµí™˜ì´ ê°€ëŠ¥í•œì§€ ì—¬ë¶€ í™•ì¸
     public bool CanPlaceInSlot(ItemObject itemObject)
     {
         if (AllowedItems.Length <= 0 || itemObject == null || itemObject.data.Id < 0)
         {
             return true;
         }
-        // ÀåÂøÇÏ°íÀÚ ÇÏ´Â ¾ÆÀÌÅÛÀÌ ½½·Ô°ú °°Àº Å¸ÀÔÀÎÁö È®ÀÎ
+        // ì¥ì°©í•˜ê³ ì í•˜ëŠ” ì•„ì´í…œì´ ìŠ¬ë¡¯ê³¼ ê°™ì€ íƒ€ì…ì¸ì§€ í™•ì¸
         for (int i = 0; i < AllowedItems.Length; i++)
         {
             if (itemObject.type == AllowedItems[i])

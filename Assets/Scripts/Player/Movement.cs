@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] private InputReader _inputReader;
     [HideInInspector] public bool AnimTime; // 애니메이션 완료 여부 확인
+    
 
     [HideInInspector] public Vector2 _inputVector;
     [HideInInspector] public Vector3 direction;
