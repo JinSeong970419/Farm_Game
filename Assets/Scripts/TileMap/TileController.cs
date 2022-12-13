@@ -7,7 +7,7 @@ public class TileController : MonoBehaviour
 {
     [SerializeField] private CropsManager cropsManager;
     private Movement _movement;
-    private ItemObject itemObject;
+    private InventorySlot itemObject;
     private TileBase tileName;
     private Crop crops;
 
@@ -36,14 +36,14 @@ public class TileController : MonoBehaviour
         tileName = GameManager.instance.tileManager.TileInfo(gridPosition, TileName.Interactable);
 
         // 1-2. 선택된 도구 확인
-        itemObject = _movement.ToolbarUI.slotsOnInterface[MouseData.selectBar].GetItemObject();
-        if (itemObject == null) return; // 선택이 안됐을 경우 리턴
+        itemObject = _movement.ToolbarUI.slotsOnInterface[MouseData.selectBar];
+        if (itemObject.GetItemObject() == null) return; // 선택이 안됐을 경우 리턴
 
         // 2. 타일의 상태 종류 확인
         // 작물을 심을 수 있는 타일로 변경
         if (tileName.name == TileName.Interactable.ToString())
         {
-            if(itemObject.type == ItemType.Hop)
+            if(itemObject.GetItemObject().type == ItemType.Hop)
             {
                 Vector2 charactorPosition = transform.position;
                 Vector2 cameraPosition = Camera.main.ScreenToWorldPoint(mouseCurrentPosition);
@@ -60,8 +60,14 @@ public class TileController : MonoBehaviour
             // 1. 작물이 심어져 있지 않은 경우
             if(tileName == null)
             {
-                if (itemObject.type == ItemType.Seed)
-                    cropsManager.SeedCrop(gridPosition, itemObject.CropData);
+                if (itemObject.GetItemObject().type == ItemType.Seed)
+                {
+                    cropsManager.SeedCrop(gridPosition, itemObject.GetItemObject().CropData);
+                    itemObject.UpdateSlot(itemObject.item, itemObject.amount - 1); // 아이템 숫자 줄이기
+                    // 아이템 삭제
+                    if(itemObject.amount == 0)
+                        itemObject.RemoveItem();
+                }
             }
             
             // 2. 작물이 심어져 있는 경우
@@ -72,7 +78,7 @@ public class TileController : MonoBehaviour
                 if (crops.stateIndex < crops.state.Length - 1)
                 {
                     // 물주기
-                    if (itemObject.type == ItemType.water)
+                    if (itemObject.GetItemObject().type == ItemType.water)
                         GameManager.instance.tileManager.waterble = true;
                 }
                 // 2-2. 작물이 모두 성장 했을 경우
