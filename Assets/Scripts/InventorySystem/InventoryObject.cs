@@ -4,6 +4,7 @@ using UnityEngine;
 public class InventoryObject : ScriptableObject
 {
     public ItemDatabase database;
+    [SerializeField] private string path;
 
     [SerializeField] public Inventory Container = new Inventory();
     public InventorySlot[] GetSlots => Container.Slots;
@@ -84,7 +85,7 @@ public class InventoryObject : ScriptableObject
         }
     }
 
-    // 인벤 비우기 테스토
-    [ContextMenu("Clear")]
-    public void Clear() { Container.Clear(); }
+    [ContextMenu("Save")] public void Save() { Container.Save(path); } // 인벤토리 저장
+    [ContextMenu("Load")] public void Load() { Container.Load(path); } // 인벤토리 로드
+    [ContextMenu("Clear")] public void Clear() { Container.Clear(); }  // 인벤 비우기
 }

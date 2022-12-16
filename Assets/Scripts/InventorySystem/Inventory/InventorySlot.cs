@@ -8,7 +8,6 @@ public class InventorySlot
 
     [NonSerialized] public UIInventoryPage parent;
     [NonSerialized] public UIInventoryItem slotDisplay;
-    //[NonSerialized] public GameObject slotDisplay;
 
     [NonSerialized] public Action<InventorySlot> onAfterUpdated;
     [NonSerialized] public Action<InventorySlot> onBeforeUpdated;
@@ -38,6 +37,7 @@ public class InventorySlot
         amount = amountValue;
         onAfterUpdated?.Invoke(this);
         onBeforeUpdated?.Invoke(this);
+        parent?.inventory.Save();
     }
 
     // 교환이 가능한지 여부 확인

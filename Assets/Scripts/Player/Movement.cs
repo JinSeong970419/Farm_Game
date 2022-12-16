@@ -41,6 +41,11 @@ public class Movement : MonoBehaviour
         ToolbarUI.InitializeInventoryUI(toolbarSize);
     }
 
+    private void Start()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     void Update()
     {
         if(!AnimTime)

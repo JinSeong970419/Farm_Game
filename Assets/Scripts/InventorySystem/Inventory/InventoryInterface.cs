@@ -92,4 +92,6 @@ public class InventoryInterface : UIInventoryPage
         if (slotsOnInterface[obj].GetItemObject()?.stackable == true)
             spliter.Show(slotsOnInterface[obj]);
     }
+
+
 }

@@ -13,18 +13,19 @@ MonoBehaviour:
   m_Name: Inventory Object
   m_EditorClassIdentifier: 
   database: {fileID: 11400000, guid: 241840992cbb1414292f70069c1dc059, type: 2}
+  path: Inventory.json
   Container:
     Slots:
     - AllowedItems: 
       item:
-        Name: 
-        Id: -1
-      amount: 0
+        Name: Carrot
+        Id: 0
+      amount: 1
     - AllowedItems: 
       item:
-        Name: 
-        Id: -1
-      amount: 0
+        Name: water
+        Id: 3
+      amount: 1
     - AllowedItems: 
       item:
         Name: 

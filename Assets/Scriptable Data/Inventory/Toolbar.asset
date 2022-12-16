@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Toolbar
   m_EditorClassIdentifier: 
   database: {fileID: 11400000, guid: 241840992cbb1414292f70069c1dc059, type: 2}
+  path: Tool.json
   Container:
     Slots:
     - AllowedItems: 

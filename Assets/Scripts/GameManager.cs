@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     }
 
     public TileManager tileManager;
-    public Toolbar_UI UI_Manager;
     public CropsManager cropManager;
 
     private void Awake()
