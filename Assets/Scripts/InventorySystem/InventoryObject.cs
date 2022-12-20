@@ -85,6 +85,7 @@ public class InventoryObject : ScriptableObject
         }
     }
 
+    // 인벤토리 슬롯
     [ContextMenu("Save")] public void Save() { Container.Save(path); } // 인벤토리 저장
     [ContextMenu("Load")] public void Load() { Container.Load(path); } // 인벤토리 로드
     [ContextMenu("Clear")] public void Clear() { Container.Clear(); }  // 인벤 비우기

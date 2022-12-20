@@ -5702,12 +5702,12 @@ TextureImporter:
       inventory_chopped_173: -722625403
       inventory_chopped_25: -1592808302
       inventory_chopped_46: 312926856
+      inventory_chopped_134: 774119280
       inventory_chopped_175: -538592323
       inventory_chopped_210: -1365829334
       inventory_chopped_221: 1955661186
       inventory_chopped_84: 1898550041
       inventory_chopped_227: -535786492
-      inventory_chopped_224: -805686718
       inventory_chopped_202: 2103063438
       inventory_chopped_265: -239436386
       inventory_chopped_99: 1777372799
@@ -5951,12 +5951,12 @@ TextureImporter:
       inventory_chopped_262: -1888484377
       inventory_chopped_220: 1683059851
       inventory_chopped_188: 1967579113
-      inventory_chopped_139: 824369403
-      inventory_chopped_49: -324217681
-      inventory_chopped_27: -1908762674
       inventory_chopped_19: 911023514
-      inventory_chopped_134: 774119280
+      inventory_chopped_224: -805686718
+      inventory_chopped_49: -324217681
+      inventory_chopped_139: 824369403
       inventory_chopped_109: 612432352
+      inventory_chopped_27: -1908762674
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

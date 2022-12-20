@@ -1,0 +1,199 @@
+{
+  "name": "Test1​",
+  "level": 0,
+  "coin": 0,
+  "item": 0,
+  "inventory": {
+    "Slots": [
+      {
+        "item": {
+          "Name": "Carrot",
+          "Id": 0
+        },
+        
+        "amount": 1
+      },
+      {
+        "item": {
+          "Name": "Carrot",
+          "Id": 0
+        },
+        "amount": 1
+      },
+      {
+        "item": {
+          "Name": "water",
+          "Id": 3
+        },
+        "amount": 1
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      },
+      {
+        "item": {
+          "Name": "",
+          "Id": -1
+        },
+        "amount": 0
+      }
+    ]
+  }}

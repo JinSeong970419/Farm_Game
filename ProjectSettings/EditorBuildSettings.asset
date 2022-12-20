@@ -8,10 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/Main.unity
+  - enabled: 0
+    path: Assets/Scenes/Farm.unity
     guid: b161a6f2b5277014a9f9ffd4d96630e9
   - enabled: 1
     path: Assets/Scenes/Home.unity
     guid: 8e04fe3e7b6467c4a805d8cac86547d1
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 70fa4f368e6b1504ab6c1e05ef55d2cb, type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: d10cc76e34c2b9c4381877f6db6ad8bd, type: 2}

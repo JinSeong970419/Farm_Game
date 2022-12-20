@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
         tileManager = GetComponent<TileManager>();
         cropManager = GetComponent<CropsManager>();
 
-        // 임시
         health = GameObject.Find("Player").GetComponent<PlayerHealth>();
     }
 }

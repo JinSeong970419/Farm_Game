@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7e26aa2df91c91e4db49ad292357afac
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _LoadTolocation: {fileID: 11400000, guid: 7368e57c49a96154ca6853de61c20477, type: 2}
+  - _saveSystem: {fileID: 11400000, guid: a0f480510632b2e439abb3bec40ec791, type: 2}
+  - _loadLocation: {fileID: 11400000, guid: 135de9513f28cc74aa2a4555471ca185, type: 2}
+  - _onNewGameButton: {fileID: 11400000, guid: 66c851017e4d42349afc816b914554e5, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

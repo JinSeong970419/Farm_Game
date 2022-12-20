@@ -4,7 +4,7 @@ using UnityEngine;
 [Serializable]
 public class InventorySlot
 {
-    public ItemType[] AllowedItems = new ItemType[0];
+    private ItemType[] AllowedItems = new ItemType[0];
 
     [NonSerialized] public UIInventoryPage parent;
     [NonSerialized] public UIInventoryItem slotDisplay;
@@ -37,7 +37,7 @@ public class InventorySlot
         amount = amountValue;
         onAfterUpdated?.Invoke(this);
         onBeforeUpdated?.Invoke(this);
-        parent?.inventory.Save();
+        //parent?.inventory.Save();
     }
 
     // 교환이 가능한지 여부 확인
