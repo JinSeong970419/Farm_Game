@@ -12,6 +12,7 @@ public abstract class UIInventoryPage : MonoBehaviour
     [SerializeField] protected RectTransform contentPanel; // 슬롯 생성 오브젝트
 
     [SerializeField] public InventoryObject inventory; // 인벤토리 데이터
+    [SerializeField] public SaveSystem saveSystem;     // Save 데이터
 
     public Dictionary<UIInventoryItem, InventorySlot> slotsOnInterface = new Dictionary<UIInventoryItem, InventorySlot>();
 
@@ -83,5 +84,11 @@ public abstract class UIInventoryPage : MonoBehaviour
             img.raycastTarget = false;
         }
         return temItem;
+    }
+
+    private void OnApplicationQuit()
+    {
+        saveSystem.SaveTest(1, saveSystem.nowSlot);
+        inventory.Clear();
     }
 }

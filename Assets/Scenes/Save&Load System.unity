@@ -8494,6 +8494,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _LoadTolocation: {fileID: 11400000, guid: 7368e57c49a96154ca6853de61c20477, type: 2}
+  _saveSystem: {fileID: 11400000, guid: a0f480510632b2e439abb3bec40ec791, type: 2}
+  _loadScene: {fileID: 11400000, guid: 2fbf2ea4d04ffec4aa07bc14e4f26bcf, type: 2}
   _showLoadScreen: 1
   _loadLocation: {fileID: 11400000, guid: 135de9513f28cc74aa2a4555471ca185, type: 2}
   _onNewGameButton: {fileID: 11400000, guid: 66c851017e4d42349afc816b914554e5, type: 2}

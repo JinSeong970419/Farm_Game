@@ -4,7 +4,7 @@ using TMPro;
 using System.IO;
 using System.Collections;
 
-// 0 = load 1 = save 2 = clear
+// 0 = load 1 = save 2 = clear enum만들기
 public class Select : MonoBehaviour
 {
     public GameObject creat;
@@ -43,7 +43,6 @@ public class Select : MonoBehaviour
         _saveSystem.nowSlot = number;
         if (savefile[number])
         {
-            Debug.Log($"test :{_saveSystem.nowSlot}");
             _onSaveEvent.RaiseEvent(0, _saveSystem.nowSlot);
             GoGame();
         }
@@ -65,7 +64,6 @@ public class Select : MonoBehaviour
             _saveSystem.nowPlayer.name = newPlayerName.text;
             _onSaveEvent.RaiseEvent(1, _saveSystem.nowSlot);
         }
-        //creat.gameObject.SetActive(false);
         _startNewGameEvent.RaiseEvent();
     }
 }

@@ -46,6 +46,7 @@ public class InventoryInterface : UIInventoryPage
             _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
             _slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = !_slot.GetItemObject().stackable ? string.Empty : _slot.amount.ToString("n0");
         }
+        saveSystem.nowPlayer.inventory = inventory.Container;
     }
 
     public override void InitializeInventoryUI(int inventorysize)

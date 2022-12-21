@@ -23,7 +23,7 @@ public class SaveSystem : ScriptableObject
         _saveLoad.OnEventRaised -= SaveTest;
     }
 
-    private void SaveTest(int number, int i = -1)
+    public void SaveTest(int number, int i = -1)
     {
         switch (number)
         {
@@ -39,7 +39,7 @@ public class SaveSystem : ScriptableObject
         }
     }
 
-    public void SaveData(int i)
+    private void SaveData(int i)
     {
         nowPlayer.inventory = _InventoryObj.Container;
         FileStream stream = new FileStream(path + "/slot" + i.ToString() + ".json", FileMode.Create);
@@ -49,7 +49,7 @@ public class SaveSystem : ScriptableObject
         stream.Close();
     }
 
-    public void LoadData(int i)
+    private void LoadData(int i)
     {
         _InventoryObj.Container.Clear();
         FileStream stream = new FileStream(path + "/slot" + i.ToString() + ".json", FileMode.Open);
@@ -61,7 +61,7 @@ public class SaveSystem : ScriptableObject
         _InventoryObj.Container = nowPlayer.inventory;
     }
 
-    public void DataClear()
+    private void DataClear()
     {
         nowSlot = -1;
         nowPlayer = new PlayerData();

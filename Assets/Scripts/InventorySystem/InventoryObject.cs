@@ -16,7 +16,9 @@ public class InventoryObject : ScriptableObject
 
         if (GetEmptySlot() == null)
         {
+#if UNITY_EDITOR
             Debug.Log("가득 찼음");
+#endif
             return false;
         }
 

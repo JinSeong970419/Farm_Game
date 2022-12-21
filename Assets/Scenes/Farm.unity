@@ -5192,6 +5192,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 4032987006223373853, guid: 246239533721a74468c806cda8a4cbea, type: 3}
   contentPanel: {fileID: 2143004945}
   inventory: {fileID: 11400000, guid: e47c607d326b64449ad48d7426f68d6d, type: 2}
+  saveSystem: {fileID: 11400000, guid: a0f480510632b2e439abb3bec40ec791, type: 2}
   itemDescription: {fileID: 1265818413}
 --- !u!1 &941554566
 GameObject:
@@ -20728,6 +20729,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 4032987006223373853, guid: d3b4b0575553f7d4698e13560b013c61, type: 3}
   contentPanel: {fileID: 1633987194}
   inventory: {fileID: 11400000, guid: aa6f445b822a1854eb25ea5261a14449, type: 2}
+  saveSystem: {fileID: 11400000, guid: a0f480510632b2e439abb3bec40ec791, type: 2}
 --- !u!1 &1381329200
 GameObject:
   m_ObjectHideFlags: 0
@@ -21344,8 +21346,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ace7c3bb436e2594697f3023aa649021, type: 2}
+  m_sharedMaterial: {fileID: 1737821495158356592, guid: ace7c3bb436e2594697f3023aa649021, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

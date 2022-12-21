@@ -11,6 +11,7 @@ public class InventorySlot
 
     [NonSerialized] public Action<InventorySlot> onAfterUpdated;
     [NonSerialized] public Action<InventorySlot> onBeforeUpdated;
+    [NonSerialized] public Action<Inventory> onsaveUpdated;
 
     public Item item;
     public int amount;
@@ -37,7 +38,7 @@ public class InventorySlot
         amount = amountValue;
         onAfterUpdated?.Invoke(this);
         onBeforeUpdated?.Invoke(this);
-        //parent?.inventory.Save();
+        onsaveUpdated?.Invoke(parent?.inventory.Container);
     }
 
     // 교환이 가능한지 여부 확인

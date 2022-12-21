@@ -5,7 +5,8 @@ using UnityEngine;
 public class StartGame : MonoBehaviour
 {
     [SerializeField] private GameSceneSO _LoadTolocation;
-    //[SerializeField] private SaveSystem _saveSystem;
+    [SerializeField] private SaveSystem _saveSystem;
+    [SerializeField] private LoadSceneSO _loadScene;
     [SerializeField] private bool _showLoadScreen;
 
     [SerializeField] private LoadEventChannelSO _loadLocation;
@@ -18,6 +19,7 @@ public class StartGame : MonoBehaviour
     private void Start()
     {
         _onNewGameButton.OnEventRaised += StartNewGame;
+        DontDestroyOnLoad(this);
     }
 
     private void OnDestroy()

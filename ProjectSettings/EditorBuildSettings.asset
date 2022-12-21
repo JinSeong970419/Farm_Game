@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/Save&Load System.unity
+    guid: dda51b02c5c61494ea7898291420e25e
+  - enabled: 1
     path: Assets/Scenes/Farm.unity
     guid: b161a6f2b5277014a9f9ffd4d96630e9
   - enabled: 1

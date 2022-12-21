@@ -4,7 +4,7 @@ using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(fileName = "Events/LoadSceneSystem")]
-public class LoadScene : ScriptableObject
+public class LoadSceneSO : ScriptableObject
 {
     [SerializeField] private GameSceneSO _LoadTolocation;
 
